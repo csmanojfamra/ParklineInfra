@@ -33,6 +33,17 @@ export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [lang, setLang] = useState<"en" | "hi">("en");
 
+  const toggleLang = () => {
+    const next = lang === "en" ? "hi" : "en";
+    setLang(next);
+    // Drive Google Translate via its combo select
+    const select = document.querySelector<HTMLSelectElement>(".goog-te-combo");
+    if (select) {
+      select.value = next;
+      select.dispatchEvent(new Event("change"));
+    }
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -115,7 +126,7 @@ export default function Header() {
               <span className="font-mono text-xs">{SITE.contact.phone1Display}</span>
             </a>
             <button
-              onClick={() => setLang(lang === "en" ? "hi" : "en")}
+              onClick={toggleLang}
               className="px-2.5 py-1 rounded-md border border-white/20 text-xs text-white/70 hover:border-gold-500 hover:text-gold-500 transition-colors font-mono"
               aria-label="Toggle language"
             >

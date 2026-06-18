@@ -72,7 +72,27 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${anton.variable} ${plusJakarta.variable} ${jetbrains.variable}`}>
+      <head>
+        {/* Google Translate — hidden widget, driven by cookie */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                  pageLanguage: 'en',
+                  includedLanguages: 'hi,en',
+                  autoDisplay: false,
+                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'gt_element');
+              }
+            `,
+          }}
+        />
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async />
+      </head>
       <body className="font-body bg-paper-50 text-ink-700 antialiased">
+        {/* Hidden GT element — do not remove */}
+        <div id="gt_element" style={{ display: "none" }} />
         <SchemaOrg />
         <Header />
         <main>{children}</main>

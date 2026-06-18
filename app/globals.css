@@ -1,5 +1,20 @@
 @import "tailwindcss";
 
+/* ── Suppress Google Translate banner & toolbar ─────────────────────────── */
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+.skiptranslate {
+  display: none !important;
+}
+
 @theme {
   /* Brand color palette */
   --color-navy-700: #1E2F5E;
