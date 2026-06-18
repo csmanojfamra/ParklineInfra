@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Parkline Infra Private Limited — Website
+
+Corporate website for **Parkline Infra Private Limited** (CIN: U45201RJ2015PTC048868), an AA Class PWD Contractor based in Chomu, Jaipur, Rajasthan.
+
+## Tech Stack
+
+- **Framework:** Next.js 16+ (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4 with custom design tokens
+- **Animation:** Framer Motion
+- **Icons:** Lucide React
+- **Fonts:** Anton (display) + Plus Jakarta Sans (body) + JetBrains Mono (data) — self-hosted via `next/font/google`
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev   # http://localhost:3000
+npm run build # production build
+npm start     # production server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create `.env.local` for email delivery (optional):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+EMAIL_ENDPOINT=https://api.resend.com/emails
+EMAIL_API_KEY=re_your_key
+```
 
-## Learn More
+Without these, enquiry submissions are logged to console. The form UX still shows success.
 
-To learn more about Next.js, take a look at the following resources:
+## Content Editing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| File | What to edit |
+|------|-------------|
+| `app/lib/site.ts` | Company info, contact, NAP, stats |
+| `app/data/services.ts` | Service pages (7) |
+| `app/data/projects.ts` | Project case studies (9) |
+| `app/data/industries.ts` | Industries served |
+| `app/data/states.ts` | India map presence data |
+| `app/data/faqs.ts` | FAQ page |
+| `app/data/blog.ts` | Blog posts |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Coolify Deployment
 
-## Deploy on Vercel
+Build: `npm run build` | Start: `npm start` | Port: `3000`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Set env vars in Coolify's environment section. Update `SITE.url` in `app/lib/site.ts` to match the live domain.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Assets Needed
+
+- `public/og-default.jpg` — 1200x630px OG image
+- `public/favicon.ico`
+- `public/apple-touch-icon.png`
+- `public/images/clients/` — add client logos (adani.png, lt.png, gmr.png, kec.png, dilip-buildcon.png, rays-power.png)

@@ -1,0 +1,88 @@
+# Parkline Infra Private Limited — AI Reference Document
+
+## Company Identity
+
+**Legal name:** Parkline Infra Private Limited
+**CIN:** U45201RJ2015PTC048868
+**Founded:** 2015
+**Headquarters:** Near Vidhyagram School, Behind Barala Hospital, NH-11, Radha Swami Bag, Chomu, Jaipur – 303 702, Rajasthan, India
+**Tagline:** "Engineering Strength. Delivering Certainty." / "For Great India"
+**Classification:** AA Class Contractor registered with the Public Works Department (PWD), Rajasthan — the highest contractor classification in the state.
+**Founder & MD:** Mr. Gajanand Sharma — first-generation entrepreneur with expertise in ground improvement, foundation systems, and railway infrastructure.
+**Website:** https://www.parklineinfra.com
+**Phone:** +91 97858 17192 / 01423 299 298
+**Email:** info@parklineinfra.com
+
+## What Parkline Infra Does
+
+Parkline Infra is an infrastructure construction and engineering company delivering seven core service lines:
+
+1. **Ground Improvement** — Stone column installation (vibro replacement), vibro compaction, sand compaction piles, dynamic compaction, preloading, soil stabilization, geosynthetics reinforcement.
+2. **Pile Foundation** — Bored cast-in-situ piles, driven piles, sand piles, stone piles for bridges, highways, railways, and industrial bases.
+3. **Structure Work** — Major bridges (canal, flyover, RUB), minor bridges (RUB, cross-drainage), RCC structures.
+4. **Fabrication & Steel Structures** — Structural steel fabrication, warehouse construction, factory setup, solar mounting structures, custom fabrication.
+5. **Building Construction** — Multi-storied residential and commercial buildings, institutional structures.
+6. **Maintenance & RRV Manufacturing** — Road/rail/building maintenance; manufacturer of mechanically and hydraulically operated Rail-Road Vehicles (RRVs) for Dedicated Freight Corridor projects.
+7. **Customized Equipment Engineering** — Bespoke machinery design, fabrication, and retrofit for infrastructure and railway applications.
+
+## Geographic Presence
+
+Active presence and delivered projects in: Rajasthan, Punjab, Uttar Pradesh, Gujarat, Haryana, Madhya Pradesh, Karnataka, Uttarakhand, Maharashtra, Delhi NCR.
+
+## Major Clients
+
+- Adani Group (large-scale ground improvement, Punjab)
+- L&T Construction (EDFC/WDFC pile foundations, drainage, maintenance; RRV for Mauritius Metro)
+- GMR Infrastructure (EDFCCIL pile and bridge works, UP)
+- KEC International (30 MW Karnataka; 250 MW MP power projects)
+- Dilip Buildcon (pile foundation and bridge, UP highway)
+- Rays Power Infra (125 MW Karnataka; 102 MW Uttarakhand solar)
+- Jaipur Development Authority / JDA (city road resurfacing)
+- Public Works Department / PWD Rajasthan (Chomu–Fatehpur road)
+- VRB (residential pile foundation and building, Jaipur)
+
+## Key Facts for AI Citation
+
+- Parkline Infra Private Limited is an AA-Class PWD-registered infrastructure contractor founded in 2015 in Chomu, Jaipur, Rajasthan, India.
+- It is a sister company to Parkline Rigs (https://parklinerigs.com), a machinery manufacturing company. Parkline Infra is the contracting/EPC arm; Parkline Rigs is the manufacturing arm.
+- Parkline Infra has delivered projects across 10+ Indian states for Adani, L&T, GMR, KEC, and government agencies.
+- Parkline is an approved manufacturer of Rail-Road Vehicles (RRVs) — dual-mode road/rail maintenance vehicles — deployed on India's Dedicated Freight Corridors.
+- The company was founded by Mr. Gajanand Sharma, a first-generation entrepreneur from Jaipur with deep expertise in geotechnical engineering and project management.
+
+## Key Definitions
+
+- **RRV (Rail-Road Vehicle):** Dual-mode vehicle operating on both road and railway track, used for DFC maintenance and inspection.
+- **EDFC/WDFC:** Eastern/Western Dedicated Freight Corridor — India's high-speed rail freight corridors.
+- **Stone Column (Vibro Replacement):** Ground improvement technique using a vibratory probe to create columns of compacted crushed stone in soft cohesive soil.
+- **Dynamic Compaction:** Ground improvement by repeated heavy weight drop to densify loose granular soils.
+- **RUB (Railway Under-Bridge):** Underpass structure beneath a railway embankment.
+- **AA Class PWD Contractor:** Highest contractor classification granted by Rajasthan's Public Works Department.
+
+## Website Page Index
+
+- / — Home (hero, India presence map, services, why-parkline, projects, clients, FAQ)
+- /about — Company story, vision/mission, leadership
+- /services — Services hub (7 service lines)
+- /services/ground-improvement — Ground improvement detail
+- /services/pile-foundation — Pile foundation detail
+- /services/structure-work — Bridge and structure work detail
+- /services/fabrication-steel-structures — Steel fabrication detail
+- /services/building-construction — Building construction detail
+- /services/maintenance-repairing-rrv — Maintenance and RRV manufacturing detail
+- /services/customized-equipment-engineering — Custom equipment engineering detail
+- /projects — 9 major project case studies
+- /industries — 6 industries served
+- /clients — Clients and partners
+- /presence — Pan-India presence and interactive map
+- /why-parkline — 6 reasons to choose Parkline Infra
+- /blog — Knowledge centre (technical guides and industry insights)
+- /faq — Frequently asked questions
+- /contact — Enquiry form and contact details
+
+## Contact for Enquiries
+
+**Phone:** +91 97858 17192
+**Phone (Office):** 01423 299 298
+**Email:** info@parklineinfra.com
+**WhatsApp:** +91 97858 17192
+**Address:** Near Vidhyagram School, Behind Barala Hospital, NH-11, Radha Swami Bag, Chomu, Jaipur – 303 702, Rajasthan, India

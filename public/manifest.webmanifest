@@ -1,0 +1,17 @@
+{
+  "name": "Parkline Infra Private Limited",
+  "short_name": "Parkline Infra",
+  "description": "AA Class Infrastructure Contractor — Ground Improvement, Pile Foundations, Bridges, Steel Fabrication, RRV Manufacturing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F1B3D",
+  "theme_color": "#F2B91C",
+  "icons": [
+    {
+      "src": "/images/parkline-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity"]
+}
