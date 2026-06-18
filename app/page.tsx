@@ -10,7 +10,7 @@ import StatCounter from "./components/StatCounter";
 import SectionHeading from "./components/SectionHeading";
 import CTABand from "./components/CTABand";
 import FaqAccordion from "./components/FaqAccordion";
-import IndiaPresenceMap from "./components/IndiaPresenceMap";
+import HeroMap from "./components/HeroMap";
 
 export const metadata: Metadata = {
   title: `${SITE.name} | ${SITE.tagline}`,
@@ -55,84 +55,71 @@ export default function HomePage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative h-screen bg-navy-900 overflow-hidden flex items-center">
+      <section className="relative bg-navy-900 overflow-hidden">
         <div className="absolute inset-0 bg-blueprint opacity-40 pointer-events-none" />
         <div className="absolute inset-0 bg-dot-pattern pointer-events-none opacity-30" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-20">
-          <div className="grid lg:grid-cols-12 gap-6 items-center">
-            {/* Left: 7 cols */}
-            <div className="lg:col-span-7 py-4 lg:py-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-20 lg:pb-0 lg:min-h-screen lg:flex lg:items-center">
+          {/* Mobile: copy → map stacked. Desktop: 7/5 col grid side-by-side */}
+          <div className="w-full grid lg:grid-cols-12 gap-6 lg:items-center">
+
+            {/* COPY — always first in DOM → always above fold on mobile */}
+            <div className="lg:col-span-7 py-2 lg:py-8">
               <p className="font-mono text-xs tracking-[0.25em] uppercase text-gold-500 mb-4">
                 AA Class PWD Contractor · Since {SITE.founded}
               </p>
-              <h1 className="font-display text-[clamp(2.4rem,4.5vw,4.5rem)] leading-[0.93] text-white mb-5">
+              <h1 className="font-display text-[clamp(2.6rem,5vw,4.5rem)] leading-[0.93] text-white mb-5">
                 Engineering<br />
                 <span className="text-gold-500">Strength.</span><br />
                 Delivering<br />
                 Certainty.
               </h1>
-              <p className="text-white/70 text-base leading-relaxed mb-5 max-w-xl">
+              <p className="text-white/70 text-sm sm:text-base leading-relaxed mb-5 max-w-xl">
                 Parkline Infra Private Limited is an AA-Class government-recognised infrastructure contractor,
                 delivering ground improvement, pile foundations, bridges, steel fabrication,
                 and railway structures across India since 2015.
               </p>
 
-              {/* Differentiated proof chips — no overlap with overline */}
               <div className="flex flex-wrap gap-2 mb-6">
-                {[
-                  "8 States",
-                  "9 Marquee Projects",
-                  "Railway-Approved RRV",
-                  "AA-Class PWD",
-                ].map((b) => (
-                  <span
-                    key={b}
-                    className="px-3 py-1.5 border border-gold-500/40 text-gold-400 text-xs font-mono tracking-wide rounded-lg bg-gold-500/8"
-                  >
+                {["8 States", "9 Marquee Projects", "Railway-Approved RRV", "AA-Class PWD"].map((b) => (
+                  <span key={b} className="px-3 py-1.5 border border-gold-500/40 text-gold-400 text-xs font-mono tracking-wide rounded-lg bg-gold-500/8">
                     {b}
                   </span>
                 ))}
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold-500 text-navy-900 font-semibold rounded-xl hover:bg-gold-400 transition-all duration-200 text-base group"
-                >
+                <Link href="/contact" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gold-500 text-navy-900 font-semibold rounded-xl hover:bg-gold-400 transition-all duration-200 text-base group">
                   Request a Quote
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link
-                  href="/services"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gold-500/50 text-white font-semibold rounded-xl hover:border-gold-500 hover:text-gold-500 transition-all duration-200 text-base"
-                >
+                <Link href="/services" className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border-2 border-gold-500/50 text-white font-semibold rounded-xl hover:border-gold-500 hover:text-gold-500 transition-all duration-200 text-base">
                   Explore Services
                 </Link>
               </div>
             </div>
 
-            {/* Right: map — 5 cols */}
-            <div className="lg:col-span-5 flex flex-col items-center">
-              <div className="w-full max-w-lg">
-                <div className="flex items-center justify-between mb-4">
-                  <p className="font-mono text-xs tracking-[0.15em] uppercase text-gold-500">
-                    Pan-India Presence
-                  </p>
-                  <span className="font-mono text-xs text-white/40">
-                    8 States · 9 Projects
-                  </span>
+            {/* MAP — below copy on mobile, right column on desktop */}
+            <div className="lg:col-span-5 flex flex-col items-center mt-8 lg:mt-0">
+              <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
+                <div className="flex items-center justify-between mb-3">
+                  <p className="font-mono text-xs tracking-[0.15em] uppercase text-gold-500">Pan-India Presence</p>
+                  <span className="font-mono text-xs text-white/40">8 States · 9 Projects</span>
                 </div>
-                <IndiaPresenceMap />
+                {/* Fixed aspect-ratio container — zero CLS when map swaps in */}
+                <div className="w-full aspect-[9/10] max-h-[55vh] lg:max-h-none">
+                  <HeroMap />
+                </div>
               </div>
             </div>
+
           </div>
         </div>
 
         {/* Trust strip */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-white/10 bg-navy-900/80 backdrop-blur-sm">
+        <div className="border-t border-white/10 bg-navy-900/80 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-white/40 tracking-widest">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs font-mono text-white/40 tracking-widest">
               <span>TRUSTED BY</span>
               {["ADANI GROUP", "L&T CONSTRUCTION", "GMR INFRASTRUCTURE", "KEC INTERNATIONAL"].map((c) => (
                 <span key={c} className="text-white/60 font-semibold">{c}</span>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Anton, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SITE } from "./lib/site";
 import Header from "./components/Header";
@@ -72,26 +73,22 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${anton.variable} ${plusJakarta.variable} ${jetbrains.variable}`}>
-      <head>
-        {/* Google Translate — hidden widget, driven by cookie */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                  pageLanguage: 'en',
-                  includedLanguages: 'hi,en',
-                  autoDisplay: false,
-                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-                }, 'gt_element');
-              }
-            `,
-          }}
-        />
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async />
-      </head>
       <body className="font-body bg-paper-50 text-ink-700 antialiased">
-        {/* Hidden GT element — do not remove */}
+        {/* Google Translate — init runs before the library loads */}
+        <Script id="gt-init" strategy="afterInteractive">{`
+          window.googleTranslateElementInit = function() {
+            new window.google.translate.TranslateElement({
+              pageLanguage: 'en',
+              includedLanguages: 'hi,en',
+              autoDisplay: false,
+              layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'gt_element');
+          };
+        `}</Script>
+        <Script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
         <div id="gt_element" style={{ display: "none" }} />
         <SchemaOrg />
         <Header />
