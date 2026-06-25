@@ -20,6 +20,7 @@ body {
   --color-navy-700: #1E2F5E;
   --color-navy-800: #16234A;
   --color-navy-900: #0F1B3D;
+  --color-blue-600: #1D4F91;
   --color-gold-100: #FCEFC4;
   --color-gold-400: #FFC43D;
   --color-gold-500: #F2B91C;
@@ -27,18 +28,21 @@ body {
   --color-slate-500: #5A6B85;
   --color-paper-50: #FFFFFF;
   --color-paper-100: #F7F8FB;
+  --color-line-200: #E6EAF1;
 
-  /* Fonts */
-  --font-display: var(--font-anton), Impact, sans-serif;
-  --font-body: var(--font-plus-jakarta), system-ui, sans-serif;
+  /* Fonts — reference Next.js-injected vars (--font-barlow, --font-inter, --font-jetbrains) */
+  --font-display: var(--font-barlow), "Barlow Condensed", system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains), monospace;
 
-  /* Custom shadows */
-  --shadow-sm: 0 1px 3px rgba(15,27,61,0.06), 0 1px 2px rgba(15,27,61,0.04);
-  --shadow-md: 0 4px 12px rgba(15,27,61,0.08), 0 2px 6px rgba(15,27,61,0.05);
-  --shadow-lg: 0 10px 30px rgba(15,27,61,0.12), 0 4px 12px rgba(15,27,61,0.08);
-  --shadow-xl: 0 20px 50px rgba(15,27,61,0.16), 0 8px 20px rgba(15,27,61,0.10);
-  --shadow-gold: 0 0 30px rgba(242,185,28,0.25), 0 0 60px rgba(242,185,28,0.10);
+  /* Custom shadows — layered, navy-tinted */
+  --shadow-sm:  0 1px 2px rgba(15,27,61,0.04), 0 1px 4px rgba(15,27,61,0.06);
+  --shadow-md:  0 2px 4px rgba(15,27,61,0.04), 0 4px 12px rgba(15,27,61,0.07), 0 8px 24px rgba(15,27,61,0.05);
+  --shadow-lg:  0 2px 4px rgba(15,27,61,0.04), 0 8px 20px rgba(15,27,61,0.08), 0 20px 40px rgba(15,27,61,0.10);
+  --shadow-xl:  0 4px 8px rgba(15,27,61,0.04), 0 12px 28px rgba(15,27,61,0.10), 0 32px 60px rgba(15,27,61,0.14);
+  --shadow-card: 0 1px 3px rgba(15,27,61,0.04), 0 4px 16px rgba(15,27,61,0.06), 0 12px 32px rgba(15,27,61,0.06);
+  --shadow-card-hover: 0 2px 4px rgba(15,27,61,0.04), 0 8px 28px rgba(15,27,61,0.10), 0 20px 48px rgba(15,27,61,0.12);
+  --shadow-gold: 0 0 20px rgba(242,185,28,0.20), 0 0 48px rgba(242,185,28,0.10);
 
   /* Animations */
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4,0,0.6,1) infinite;
@@ -52,11 +56,6 @@ body {
   @keyframes shimmer {
     0%   { background-position: -200% 0; }
     100% { background-position:  200% 0; }
-  }
-  @keyframes mapPulseKf {
-    0% { transform: scale(1); opacity: 0.8; }
-    50% { transform: scale(2.5); opacity: 0; }
-    100% { transform: scale(1); opacity: 0; }
   }
 }
 
@@ -97,16 +96,73 @@ html {
 
 /* Body */
 body {
-  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Font utilities — also registered as @utility for Tailwind v4 JIT */
+/* Display headings — optical sizing + tighter tracking */
+h1, h2, h3 {
+  text-wrap: balance;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Tabular numbers for stats */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Section eyebrow label */
+.eyebrow {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Premium card — layered shadow + border */
+.card-premium {
+  background: white;
+  border: 1px solid rgba(15,27,61,0.07);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+.card-premium:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+  border-color: rgba(242,185,28,0.3);
+}
+
+/* Hairline rule */
+.hairline {
+  border-top: 1px solid rgba(15,27,61,0.08);
+}
+
+/* Gold accent underline */
+.gold-underline {
+  position: relative;
+}
+.gold-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: #F2B91C;
+  border-radius: 1px;
+}
+
+/* Font utilities */
 .font-display {
-  font-family: var(--font-anton), Impact, sans-serif;
+  font-family: var(--font-barlow), "Barlow Condensed", system-ui, sans-serif;
 }
 
 .font-body {
-  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 .font-mono {
@@ -135,6 +191,12 @@ body {
     linear-gradient(rgba(242, 185, 28, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(242, 185, 28, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+/* Light dot pattern for paper sections */
+.bg-dot-light {
+  background-image: radial-gradient(circle, rgba(15, 27, 61, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Grain overlay for dark sections */
@@ -171,13 +233,42 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Map pulse animation */
-@keyframes mapPulse {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(2.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 0; }
+/* ── Radar map marker animations ──────────────────────────────────────────── */
+@keyframes radarPulse {
+  0%   { transform: scale(0.8); opacity: 0.7; }
+  70%  { transform: scale(2.6); opacity: 0;   }
+  100% { transform: scale(2.6); opacity: 0;   }
+}
+@keyframes coreBreathe {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.12); }
 }
 
+.radar-ring {
+  fill: none;
+  stroke: #F2B91C;
+  stroke-width: 1.5;
+  animation: radarPulse 2.2s ease-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.radar-ring-2 {
+  stroke-width: 1;
+  opacity: 0.5;
+  animation-delay: 1.1s;
+}
+.radar-core {
+  animation: coreBreathe 2.5s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+/* legacy map-pulse kept for backwards compat */
+@keyframes mapPulse {
+  0%   { transform: scale(1);   opacity: 0.8; }
+  50%  { transform: scale(2.5); opacity: 0;   }
+  100% { transform: scale(1);   opacity: 0;   }
+}
 .map-pulse {
   animation: mapPulse 2.5s ease-out infinite;
 }

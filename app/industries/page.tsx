@@ -5,6 +5,7 @@ import { INDUSTRIES } from "../data/industries";
 import { SERVICES } from "../data/services";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CTABand from "../components/CTABand";
+import HeroRingAccent from "../components/HeroRingAccent";
 
 export const metadata: Metadata = {
   title: "Industries Served — Transportation, Energy, Railway & More",
@@ -16,17 +17,18 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <>
-      <section className="relative bg-navy-900 pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-blueprint opacity-30 pointer-events-none" />
+      <section className="relative bg-paper-50 pt-32 pb-16 overflow-hidden border-b border-line-200">
+        <div className="absolute inset-0 bg-dot-light opacity-50 pointer-events-none" />
+        <HeroRingAccent />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Industries" }]} light />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Industries" }]} />
           <div className="mt-8 max-w-3xl">
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold-500 mb-4">Industries Served</p>
-            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[0.95] text-white mb-6">
+            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-navy-900 mb-6">
               Built for<br />
-              <span className="text-gold-500">Every Sector</span>
+              <span className="text-gold-500 italic">Every Sector</span>
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-ink-700/70 text-lg leading-relaxed">
               Parkline Infra&apos;s multi-discipline capability spans six infrastructure sectors — from national
               freight corridors to renewable energy parks, government road projects to urban commercial construction.
             </p>
@@ -70,7 +72,7 @@ export default function IndustriesPage() {
                           <p className="font-semibold text-navy-800 text-sm group-hover:text-gold-500 transition-colors">
                             {svc.title}
                           </p>
-                          <p className="text-xs text-slate-500 mt-0.5">{svc.tagline}</p>
+                          <p className="text-xs text-ink-700/60 mt-0.5">{svc.tagline}</p>
                         </div>
                         <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-gold-500 transition-colors" />
                       </Link>

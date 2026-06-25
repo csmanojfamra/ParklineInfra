@@ -5,6 +5,7 @@ import { SERVICES } from "../data/services";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CTABand from "../components/CTABand";
 import SectionHeading from "../components/SectionHeading";
+import HeroRingAccent from "../components/HeroRingAccent";
 
 export const metadata: Metadata = {
   title: "Services — Ground Improvement, Pile Foundation, Bridges & More",
@@ -16,17 +17,18 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className="relative bg-navy-900 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-blueprint opacity-30 pointer-events-none" />
+      <section className="relative bg-paper-50 pt-32 pb-20 overflow-hidden border-b border-line-200">
+        <div className="absolute inset-0 bg-dot-light opacity-50 pointer-events-none" />
+        <HeroRingAccent />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} light />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Services" }]} />
           <div className="mt-8 max-w-3xl">
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold-500 mb-4">What We Do</p>
-            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[0.95] text-white mb-6">
+            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-navy-900 mb-6">
               Seven Core<br />
-              <span className="text-gold-500">Service Lines</span>
+              <span className="text-gold-500 italic">Service Lines</span>
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-ink-700/70 text-lg leading-relaxed">
               Parkline Infra Private Limited is an AA-Class infrastructure contractor delivering seven
               integrated service lines — from deep geotechnical ground improvement to in-house railway
               equipment manufacturing — under a single disciplined programme.
@@ -53,15 +55,15 @@ export default function ServicesPage() {
                   <h2 className="font-display text-2xl md:text-3xl text-navy-800 mb-2 group-hover:text-gold-500 transition-colors">
                     {s.title}
                   </h2>
-                  <p className="text-slate-500 leading-relaxed mb-4">{s.intro.slice(0, 180)}...</p>
+                  <p className="text-ink-700/60 leading-relaxed mb-4">{s.intro.slice(0, 180)}...</p>
                   <div className="flex flex-wrap gap-2">
                     {s.expertise.slice(0, 3).map((e) => (
-                      <span key={e} className="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-lg">
+                      <span key={e} className="text-xs bg-navy-900/5 text-ink-700/60 px-2.5 py-1 rounded-lg">
                         {e}
                       </span>
                     ))}
                     {s.expertise.length > 3 && (
-                      <span className="text-xs text-slate-400 px-2 py-1">+{s.expertise.length - 3} more</span>
+                      <span className="text-xs text-ink-700/40 px-2 py-1">+{s.expertise.length - 3} more</span>
                     )}
                   </div>
                 </div>

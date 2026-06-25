@@ -3,6 +3,7 @@ import { Award, Users, Train, Settings, MapPin, Shield } from "lucide-react";
 import { WHY_CHOOSE } from "../lib/site";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CTABand from "../components/CTABand";
+import HeroRingAccent from "../components/HeroRingAccent";
 
 export const metadata: Metadata = {
   title: "Why Choose Parkline Infra — AA Class, Multi-State Execution, In-House RRV",
@@ -39,17 +40,18 @@ const EXTENDED = [
 export default function WhyParklinePage() {
   return (
     <>
-      <section className="relative bg-navy-900 pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-blueprint opacity-30 pointer-events-none" />
+      <section className="relative bg-paper-50 pt-32 pb-16 overflow-hidden border-b border-line-200">
+        <div className="absolute inset-0 bg-dot-light opacity-50 pointer-events-none" />
+        <HeroRingAccent />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Why Parkline" }]} light />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Why Parkline" }]} />
           <div className="mt-8 max-w-3xl">
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold-500 mb-4">The Case for Parkline</p>
-            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[0.95] text-white mb-6">
+            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-navy-900 mb-6">
               Infrastructure Is Not<br />Just Construction —<br />
-              <span className="text-gold-500">It Is Risk Management.</span>
+              <span className="text-gold-500 italic">It Is Risk Management.</span>
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-ink-700/70 text-lg leading-relaxed">
               Every infrastructure project carries risk — of ground failure, structural inadequacy, programme
               delay, cost overrun, and safety incident. Choosing Parkline Infra is how that risk is managed.
               Here is the evidence.
@@ -77,11 +79,11 @@ export default function WhyParklinePage() {
                     </div>
                   </div>
                   <h2 className="font-display text-2xl text-navy-800 leading-tight">{w.title}</h2>
-                  <p className="mt-2 text-sm text-slate-500 leading-relaxed">{w.desc}</p>
+                  <p className="mt-2 text-sm text-ink-700/60 leading-relaxed">{w.desc}</p>
                 </div>
                 <div className="md:col-span-7">
                   <div className="bg-paper-100 rounded-2xl p-6 border border-slate-200 border-l-4 border-l-gold-500">
-                    <p className="text-slate-600 leading-relaxed">{ext.detail}</p>
+                    <p className="text-ink-700/80 leading-relaxed">{ext.detail}</p>
                   </div>
                 </div>
               </div>

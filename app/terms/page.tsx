@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <section className="bg-navy-900 pt-32 pb-12">
+      <section className="bg-paper-50 pt-32 pb-12 border-b border-line-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Terms & Conditions" }]} light />
-          <h1 className="font-display text-4xl text-white mt-6">Terms & Conditions</h1>
-          <p className="text-white/60 font-mono text-xs mt-2">Last updated: January 2025</p>
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Terms & Conditions" }]} />
+          <h1 className="font-display text-4xl text-navy-900 mt-6">Terms & Conditions</h1>
+          <p className="text-slate-400 font-mono text-xs mt-2">Last updated: January 2025</p>
         </div>
       </section>
       <section className="py-16 bg-paper-50">

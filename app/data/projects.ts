@@ -68,7 +68,7 @@ export const PROJECTS: Project[] = [
       "Exported through L&T Construction for Mauritius deployment",
       "Demonstrates Parkline's railway equipment manufacturing capability",
     ],
-    featured: true,
+    featured: false,
   },
   {
     id: "jda-road",
@@ -105,7 +105,7 @@ export const PROJECTS: Project[] = [
       "Pile foundation and civil works for utility-scale solar",
       "Delivered to Rays Power Infra's technical specifications",
     ],
-    featured: false,
+    featured: true,
   },
   {
     id: "vrb-residential",
@@ -128,6 +128,7 @@ export const PROJECTS: Project[] = [
   {
     id: "pwd-chomu-fatehpur",
     client: "Public Works Department (PWD)",
+    clientLogo: "/images/clients/pwd.png",
     title: "Road Development — Chomu to Fatehpur, Rajasthan",
     scope:
       "Road development and construction from Chomu to Fatehpur under the Public Works Department, Rajasthan — delivering improved connectivity along this important regional corridor.",
@@ -190,7 +191,7 @@ export const PROJECTS: Project[] = [
       "Comprehensive infrastructure works for GMR Infrastructure on EDFCCIL (Eastern Dedicated Freight Corridor Corporation of India Limited) projects in Uttar Pradesh, including pile foundation, sand pile, stone pile installation, and major bridge construction.",
     states: ["Uttar Pradesh"],
     sector: "railway",
-    sectorLabel: "Railway Infrastructure",
+    sectorLabel: "Bridge Construction",
     services: ["pile-foundation", "ground-improvement", "structure-work"],
     highlights: [
       "Pile foundation, sand pile, and stone pile installation",

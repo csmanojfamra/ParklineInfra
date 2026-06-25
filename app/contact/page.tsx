@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { SITE } from "../lib/site";
 import EnquiryForm from "../components/EnquiryForm";
 import Breadcrumbs from "../components/Breadcrumbs";
+import HeroRingAccent from "../components/HeroRingAccent";
 
 export const metadata: Metadata = {
   title: "Contact Parkline Infra — Request a Quote",
@@ -18,17 +19,18 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="relative bg-navy-900 pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-blueprint opacity-30 pointer-events-none" />
+      <section className="relative bg-paper-50 pt-32 pb-16 overflow-hidden border-b border-line-200">
+        <div className="absolute inset-0 bg-dot-light opacity-50 pointer-events-none" />
+        <HeroRingAccent />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} light />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
           <div className="mt-8 max-w-2xl">
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold-500 mb-4">Get in Touch</p>
-            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[0.95] text-white mb-4">
+            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-navy-900 mb-4">
               Let&apos;s Build<br />
-              <span className="text-gold-500">Something Together</span>
+              <span className="text-gold-500 italic">Something Together</span>
             </h1>
-            <p className="text-white/70 text-lg">
+            <p className="text-ink-700/70 text-lg">
               Submit an enquiry below and our engineering team will respond within one business day.
             </p>
           </div>
@@ -42,7 +44,7 @@ export default function ContactPage() {
             <div className="lg:col-span-7">
               <div className="bg-paper-50 rounded-2xl p-8 border border-slate-200 shadow-sm">
                 <h2 className="font-display text-2xl text-navy-800 mb-2">Project Enquiry</h2>
-                <p className="text-sm text-slate-500 mb-6">
+                <p className="text-sm text-ink-700/60 mb-6">
                   Fill in your details and we&apos;ll get back to you within one business day.
                 </p>
                 <EnquiryForm />
@@ -99,7 +101,7 @@ export default function ContactPage() {
                 <p className="font-mono text-xs tracking-[0.15em] uppercase text-gold-500 mb-4">Office Address</p>
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" />
-                  <address className="not-italic text-sm text-slate-600 leading-relaxed">
+                  <address className="not-italic text-sm text-ink-700/80 leading-relaxed">
                     {SITE.address.full}
                   </address>
                 </div>
@@ -118,8 +120,8 @@ export default function ContactPage() {
                   <Clock className="w-4 h-4 text-gold-500" />
                   <p className="font-mono text-xs tracking-[0.15em] uppercase text-gold-500">Business Hours</p>
                 </div>
-                <p className="text-sm text-slate-600">Monday – Saturday: 9:00 AM – 6:00 PM IST</p>
-                <p className="text-xs text-slate-400 mt-1">Enquiries received outside hours will be addressed the next business day.</p>
+                <p className="text-sm text-ink-700/80">Monday – Saturday: 9:00 AM – 6:00 PM IST</p>
+                <p className="text-xs text-ink-700/40 mt-1">Enquiries received outside hours will be addressed the next business day.</p>
               </div>
 
               {/* Map embed placeholder */}
@@ -128,7 +130,7 @@ export default function ContactPage() {
                   href={mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-slate-500 hover:text-gold-500 transition-colors flex items-center gap-2"
+                  className="text-sm text-ink-700/60 hover:text-gold-500 transition-colors flex items-center gap-2"
                 >
                   <MapPin className="w-4 h-4" />
                   View on Google Maps

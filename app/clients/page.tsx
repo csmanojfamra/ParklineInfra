@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { PROJECTS } from "../data/projects";
 import Breadcrumbs from "../components/Breadcrumbs";
 import CTABand from "../components/CTABand";
+import HeroRingAccent from "../components/HeroRingAccent";
 
 export const metadata: Metadata = {
   title: "Clients & Partners — Adani, L&T, GMR, KEC, Dilip Buildcon",
@@ -70,17 +71,18 @@ const CLIENTS = [
 export default function ClientsPage() {
   return (
     <>
-      <section className="relative bg-navy-900 pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-blueprint opacity-30 pointer-events-none" />
+      <section className="relative bg-paper-50 pt-32 pb-16 overflow-hidden border-b border-line-200">
+        <div className="absolute inset-0 bg-dot-light opacity-50 pointer-events-none" />
+        <HeroRingAccent />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Clients" }]} light />
+          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Clients" }]} />
           <div className="mt-8 max-w-3xl">
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold-500 mb-4">Clients & Partners</p>
-            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[0.95] text-white mb-6">
+            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-navy-900 mb-6">
               Trusted by<br />
-              <span className="text-gold-500">India&apos;s Best</span>
+              <span className="text-gold-500 italic">India&apos;s Best</span>
             </h1>
-            <p className="text-white/70 text-lg leading-relaxed">
+            <p className="text-ink-700/70 text-lg leading-relaxed">
               Parkline Infra&apos;s client roster includes India&apos;s largest industrial conglomerates, leading EPC
               contractors, renewable energy developers, and government agencies. These relationships are built
               on delivery — not promises.
@@ -99,11 +101,11 @@ export default function ClientsPage() {
               >
                 <div className="flex items-start justify-between mb-3">
                   <h2 className="font-display text-xl text-navy-800 leading-tight">{c.name}</h2>
-                  <span className="text-xs font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded flex-shrink-0 ml-2">
+                  <span className="text-xs font-mono text-ink-700/40 bg-navy-900/5 px-2 py-0.5 rounded flex-shrink-0 ml-2">
                     {c.type}
                   </span>
                 </div>
-                <p className="text-sm text-slate-500 leading-relaxed">{c.desc}</p>
+                <p className="text-sm text-ink-700/60 leading-relaxed">{c.desc}</p>
               </div>
             ))}
           </div>

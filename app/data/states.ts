@@ -2,6 +2,7 @@ export type StateData = {
   id: string;
   name: string;
   active: boolean;
+  presence?: boolean;   // true = counted in "8 States"; false/absent = project-only
   marker: { x: number; y: number };
   projects: string[];
   projectTitles: string[];
@@ -12,6 +13,7 @@ export const INDIA_STATES: StateData[] = [
     id: "RJ",
     name: "Rajasthan",
     active: true,
+    presence: true,
     marker: { x: 195, y: 235 },
     projects: ["jda-road", "pwd-chomu-fatehpur", "vrb-residential", "lt-edfc-wdfc"],
     projectTitles: [
@@ -25,6 +27,7 @@ export const INDIA_STATES: StateData[] = [
     id: "GJ",
     name: "Gujarat",
     active: true,
+    presence: true,
     marker: { x: 155, y: 285 },
     projects: ["lt-edfc-wdfc"],
     projectTitles: ["L&T WDFC Infrastructure Works"],
@@ -33,6 +36,7 @@ export const INDIA_STATES: StateData[] = [
     id: "HR",
     name: "Haryana",
     active: true,
+    presence: true,
     marker: { x: 215, y: 195 },
     projects: ["lt-edfc-wdfc"],
     projectTitles: ["L&T EDFC/WDFC Works"],
@@ -41,6 +45,7 @@ export const INDIA_STATES: StateData[] = [
     id: "UP",
     name: "Uttar Pradesh",
     active: true,
+    presence: true,
     marker: { x: 280, y: 215 },
     projects: ["lt-edfc-wdfc", "dilip-buildcon-highway", "gmr-edfccil"],
     projectTitles: [
@@ -53,6 +58,7 @@ export const INDIA_STATES: StateData[] = [
     id: "MP",
     name: "Madhya Pradesh",
     active: true,
+    presence: true,
     marker: { x: 245, y: 270 },
     projects: ["kec-solar-power"],
     projectTitles: ["KEC International 250 MW Power Project"],
@@ -61,6 +67,7 @@ export const INDIA_STATES: StateData[] = [
     id: "PB",
     name: "Punjab",
     active: true,
+    presence: true,
     marker: { x: 200, y: 170 },
     projects: ["adani-ground-improvement"],
     projectTitles: ["Adani Group — Large-Scale Ground Improvement"],
@@ -69,6 +76,7 @@ export const INDIA_STATES: StateData[] = [
     id: "KL",
     name: "Kerala",
     active: true,
+    presence: true,
     marker: { x: 215, y: 430 },
     projects: [],
     projectTitles: ["Infrastructure works in Kerala"],
@@ -77,6 +85,7 @@ export const INDIA_STATES: StateData[] = [
     id: "DL",
     name: "Delhi NCR",
     active: true,
+    presence: true,
     marker: { x: 225, y: 200 },
     projects: [],
     projectTitles: ["Infrastructure works in Delhi NCR"],

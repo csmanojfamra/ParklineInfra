@@ -38,12 +38,12 @@ function renderMarkdown(content: string): string {
     .replace(/^### (.+)$/gm, '<h3 class="font-display text-xl text-navy-800 mt-8 mb-3">$1</h3>')
     .replace(/\*\*(.+?)\*\*/g, '<strong class="text-navy-800 font-semibold">$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/^- (.+)$/gm, '<li class="text-slate-600 leading-relaxed ml-4">• $1</li>')
+    .replace(/^- (.+)$/gm, '<li class="text-ink-700/80 leading-relaxed ml-4">• $1</li>')
     .replace(/(<li[^]*?<\/li>\n?)+/gm, '<ul class="space-y-1.5 my-4">$&</ul>')
-    .replace(/^\d+\. (.+)$/gm, '<li class="text-slate-600 leading-relaxed ml-4 list-decimal">$1</li>')
+    .replace(/^\d+\. (.+)$/gm, '<li class="text-ink-700/80 leading-relaxed ml-4 list-decimal">$1</li>')
     .replace(/^\| (.+) \|$/gm, '<tr>$1</tr>')
-    .replace(/\n\n/g, '</p><p class="text-slate-600 leading-relaxed my-4">')
-    .replace(/^([^<\n].+)$/gm, '<p class="text-slate-600 leading-relaxed my-4">$1</p>');
+    .replace(/\n\n/g, '</p><p class="text-ink-700/80 leading-relaxed my-4">')
+    .replace(/^([^<\n].+)$/gm, '<p class="text-ink-700/80 leading-relaxed my-4">$1</p>');
 }
 
 export default async function BlogPostPage({
@@ -91,8 +91,8 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <section className="relative bg-navy-900 pt-32 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-blueprint opacity-30 pointer-events-none" />
+      <section className="relative bg-paper-50 pt-32 pb-16 overflow-hidden border-b border-line-200">
+        <div className="absolute inset-0 bg-dot-light opacity-50 pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs
             items={[
@@ -100,22 +100,21 @@ export default async function BlogPostPage({
               { label: "Blog", href: "/blog" },
               { label: post.title.slice(0, 40) + "..." },
             ]}
-            light
           />
           <div className="mt-8 max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="font-mono text-xs text-gold-500 bg-gold-500/10 px-2 py-0.5 rounded-md">
                 {post.category}
               </span>
-              <div className="flex items-center gap-1 text-xs text-white/40 font-mono">
+              <div className="flex items-center gap-1 text-xs text-ink-700/40 font-mono">
                 <Clock className="w-3 h-3" />
                 {post.readTime} read
               </div>
-              <span className="text-xs text-white/40 font-mono">
+              <span className="text-xs text-ink-700/40 font-mono">
                 {new Date(post.date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}
               </span>
             </div>
-            <h1 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-tight text-white">
+            <h1 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-tight text-navy-900">
               {post.title}
             </h1>
           </div>
@@ -126,7 +125,7 @@ export default async function BlogPostPage({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12">
             <article className="lg:col-span-8">
-              <p className="text-lg text-slate-600 leading-relaxed border-l-4 border-gold-500 pl-5 mb-8 italic">
+              <p className="text-lg text-ink-700/80 leading-relaxed border-l-4 border-gold-500 pl-5 mb-8 italic">
                 {post.excerpt}
               </p>
               <div
@@ -135,9 +134,9 @@ export default async function BlogPostPage({
               />
               <div className="mt-10 pt-6 border-t border-slate-200">
                 <div className="flex flex-wrap items-center gap-2">
-                  <Tag className="w-4 h-4 text-slate-400" />
+                  <Tag className="w-4 h-4 text-ink-700/40" />
                   {post.tags.map((t) => (
-                    <span key={t} className="text-xs bg-slate-100 text-slate-500 px-2.5 py-1 rounded-lg">
+                    <span key={t} className="text-xs bg-navy-900/5 text-ink-700/60 px-2.5 py-1 rounded-lg">
                       {t}
                     </span>
                   ))}

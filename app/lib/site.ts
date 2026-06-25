@@ -47,7 +47,7 @@ export const FOUNDER = {
 
 export const STATS = [
   { value: 10, suffix: "+", label: "Years of Excellence" },
-  { value: 8, suffix: "+", label: "States of Presence" },
+  { value: 8, suffix: "", label: "States of Presence" },
   { value: 9, suffix: "", label: "Flagship Projects" },
   { value: 50, suffix: "+", label: "Projects Delivered" },
 ];

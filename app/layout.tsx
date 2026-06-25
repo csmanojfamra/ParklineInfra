@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Inter, Barlow_Condensed, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SITE } from "./lib/site";
@@ -7,17 +7,19 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import SchemaOrg from "./components/SchemaOrg";
+import { SmoothScrollProvider } from "./providers";
 
-const anton = Anton({
-  weight: "400",
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-anton",
+  variable: "--font-inter",
   display: "swap",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const barlow = Barlow_Condensed({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta",
+  variable: "--font-barlow",
+  weight: ["600", "700", "800", "900"],
+  style: ["normal"],
   display: "swap",
 });
 
@@ -72,9 +74,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${anton.variable} ${plusJakarta.variable} ${jetbrains.variable}`}>
-      <body className="font-body bg-paper-50 text-ink-700 antialiased">
-        {/* Google Translate — init runs before the library loads */}
+    <html lang="en" className={`${inter.variable} ${barlow.variable} ${jetbrains.variable}`}>
+<body className="font-body bg-paper-50 text-ink-700 antialiased">
+        {/* Google Translate */}
         <Script id="gt-init" strategy="afterInteractive">{`
           window.googleTranslateElementInit = function() {
             new window.google.translate.TranslateElement({
@@ -91,10 +93,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <div id="gt_element" style={{ display: "none" }} />
         <SchemaOrg />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppFloat />
+        <SmoothScrollProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <WhatsAppFloat />
+        </SmoothScrollProvider>
       </body>
     </html>
   );
