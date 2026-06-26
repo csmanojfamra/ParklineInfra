@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { SITE } from "../lib/site";
+import { DARK_HERO } from "../lib/hero-variant";
 
 const NAV_LINKS = [
   { label: "About", href: "/about" },
@@ -28,6 +30,9 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
+  const darkUnscrolled = DARK_HERO && pathname === "/";
+
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -49,21 +54,23 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Light hero: unscrolled = navy text on white; scrolled = white text on navy
-  const navTextClass = scrolled
+  const onDark = scrolled || darkUnscrolled;
+  const navTextClass = onDark
     ? "text-white/90 hover:text-gold-500"
     : "text-navy-800 hover:text-gold-500";
-  const phoneTextClass = scrolled ? "text-white/70 hover:text-gold-500" : "text-navy-700 hover:text-gold-500";
-  const langBtnClass = scrolled
+  const phoneTextClass = onDark ? "text-white/70 hover:text-gold-500" : "text-navy-700 hover:text-gold-500";
+  const langBtnClass = onDark
     ? "border-white/20 text-white/70 hover:border-gold-500 hover:text-gold-500"
     : "border-navy-800/30 text-navy-700 hover:border-gold-500 hover:text-gold-500";
-  const mobileToggleClass = scrolled ? "text-white" : "text-navy-900";
+  const mobileToggleClass = onDark ? "text-white" : "text-navy-900";
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-navy-900/98 backdrop-blur-md shadow-lg py-3"
+          : darkUnscrolled
+          ? "bg-transparent py-3"
           : "bg-white/80 backdrop-blur-sm border-b border-line-200/60 py-3"
       }`}
     >
@@ -73,7 +80,7 @@ export default function Header() {
           {/* Logo — 52px height, optically centred via flex */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src={scrolled ? "/images/parkline-logo-light.png" : "/images/parkline-logo-dark.png"}
+              src={onDark ? "/images/parkline-logo-light.png" : "/images/parkline-logo-dark.png"}
               alt="Parkline Infra Private Limited"
               width={220}
               height={52}
@@ -129,7 +136,7 @@ export default function Header() {
           {/* Right actions — thin divider separates nav from contact group */}
           <div className="hidden lg:flex items-center gap-3">
             {/* Divider */}
-            <div className={`w-px h-5 ${scrolled ? "bg-white/20" : "bg-navy-800/15"}`} />
+            <div className={`w-px h-5 ${onDark ? "bg-white/20" : "bg-navy-800/15"}`} />
             <a
               href={`tel:${SITE.contact.phone1}`}
               className={`flex items-center gap-1.5 transition-colors ${phoneTextClass}`}

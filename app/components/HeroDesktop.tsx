@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import HeroMap from "./HeroMap";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -15,10 +14,10 @@ export default function HeroDesktop({ founded }: Props) {
   return (
     <div className="hidden lg:flex min-h-screen items-center">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-24 pb-12">
-        <div className="grid grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-12 gap-8 items-stretch">
 
           {/* ── Left: Copy ──────────────────────────────────────────── */}
-          <div className="col-span-6 xl:col-span-7 flex flex-col justify-center">
+          <div className="col-span-6 flex flex-col justify-center py-4">
 
             {/* Overline */}
             {/* Credential badge — solid gold pill for legibility */}
@@ -114,33 +113,56 @@ export default function HeroDesktop({ founded }: Props) {
             </motion.div>
           </div>
 
-          {/* ── Right: Map ──────────────────────────────────────────── */}
-          <div className="col-span-6 xl:col-span-5">
+          {/* ── Right: Hero photo ───────────────────────────────────── */}
+          <div className="col-span-6 flex items-stretch">
             <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, delay: 0.22, ease: EASE }}
+              className="relative w-full self-stretch"
+              initial={{ opacity: 0, scale: 0.97 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.0, delay: 0.22, ease: EASE }}
             >
-              <div className="flex items-center justify-between mb-3">
-                <p className="eyebrow text-navy-700/60">Pan-India Presence</p>
-                <span className="font-mono text-xs text-slate-400">8 States · 9 Projects</span>
-              </div>
-              {/* Map stage — subtle panel anchors the map visually */}
               <div
-                className="relative rounded-2xl p-3"
+                className="relative rounded-2xl overflow-hidden w-full h-full"
                 style={{
-                  background: "linear-gradient(145deg,rgba(248,250,255,0.95) 0%,rgba(244,247,253,0.8) 100%)",
-                  boxShadow: "inset 0 0 0 1px rgba(15,27,61,0.07), 0 4px 32px rgba(15,27,61,0.07)",
+                  minHeight: "480px",
+                  boxShadow:
+                    "0 2px 8px rgba(15,27,61,0.08), 0 8px 32px rgba(15,27,61,0.14), 0 24px 64px rgba(15,27,61,0.18)",
                 }}
               >
-                {/* Gold radial halo behind the active-state cluster */}
-                <div
-                  className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{ background: "radial-gradient(ellipse 65% 55% at 50% 44%, rgba(242,185,28,0.11) 0%, transparent 70%)" }}
+                <Image
+                  src="/images/services/hero-feature.png"
+                  alt="Aerial view of Parkline Infra piling operations at golden hour"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                  sizes="(min-width: 1280px) 50vw, 50vw"
                 />
-                <div className="w-full aspect-[9/10]">
-                  <HeroMap lightBg />
-                </div>
+                {/* Subtle bottom-fade so chip reads cleanly */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{ background: "linear-gradient(to top, rgba(15,27,61,0.38) 0%, transparent 40%)" }}
+                />
+
+                {/* Credential chip — refined, tucked bottom-left */}
+                <motion.div
+                  className="absolute bottom-3 left-3"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.9, ease: EASE }}
+                >
+                  <span
+                    className="inline-flex items-center px-2.5 py-1 font-mono text-[9px] font-semibold tracking-[0.13em] uppercase rounded-full select-none"
+                    style={{
+                      background: "rgba(15,27,61,0.55)",
+                      backdropFilter: "blur(10px)",
+                      WebkitBackdropFilter: "blur(10px)",
+                      border: "1px solid rgba(242,185,28,0.3)",
+                      color: "#F2B91C",
+                    }}
+                  >
+                    AA-CLASS · 8 STATES · SINCE 2015
+                  </span>
+                </motion.div>
               </div>
             </motion.div>
           </div>

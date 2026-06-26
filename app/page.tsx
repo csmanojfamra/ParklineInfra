@@ -6,16 +6,17 @@ import { SITE, WHY_CHOOSE, STATS } from "./lib/site";
 import { SERVICES } from "./data/services";
 import { PROJECTS } from "./data/projects";
 import { INDUSTRIES } from "./data/industries";
-import { INDIA_STATES } from "./data/states";
 import { SERVICE_IMAGES, PROJECT_IMAGES, SECTION_IMAGES } from "./lib/images";
 import { SERVICE_BLUR } from "./lib/blur-placeholders";
 import StatCounter from "./components/StatCounter";
 import CTABand from "./components/CTABand";
 import FaqAccordion from "./components/FaqAccordion";
-import HeroMap from "./components/HeroMap";
 import { FadeUp, Stagger, StaggerItem, FadeIn } from "./components/ui/motion";
 import HeroDesktop from "./components/HeroDesktop";
+import HeroDesktopDark from "./components/HeroDesktopDark";
+import HeroMobileDark from "./components/HeroMobileDark";
 import SectionHeader from "./components/SectionHeader";
+import { DARK_HERO } from "./lib/hero-variant";
 
 export const metadata: Metadata = {
   title: `${SITE.name} | ${SITE.tagline}`,
@@ -59,58 +60,74 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative bg-paper-50 overflow-hidden border-b border-line-200">
-        <div className="absolute inset-0 bg-dot-light opacity-60 pointer-events-none" />
+      <section className="relative overflow-hidden border-b border-line-200">
 
-        {/* MOBILE — copy leads, map supports below fold */}
-        <div className="lg:hidden flex flex-col">
-          {/* Nav spacer */}
-          <div className="h-[72px]" />
+        {/* LIGHT variant: flat paper background + dot texture */}
+        {!DARK_HERO && (
+          <>
+            <div className="absolute inset-0 bg-paper-50 pointer-events-none" />
+            <div className="absolute inset-0 bg-dot-light opacity-60 pointer-events-none" />
+          </>
+        )}
 
-          {/* ① COPY — fully above fold */}
-          <div className="px-5 pt-5 pb-6">
-            <span className="inline-flex items-center px-3 py-1 bg-gold-500 text-navy-900 font-mono text-[9px] font-bold tracking-[0.15em] uppercase rounded-full mb-4 select-none">
-              AA Class PWD Contractor · Since {SITE.founded}
-            </span>
-            <h1 className="font-display font-black tracking-tight text-[clamp(2rem,8vw,2.6rem)] leading-[1.04] text-navy-900 mb-3">
-              Engineering{" "}
-              <span className="text-gold-500">Strength.</span>
-              <br />Delivering Certainty.
-            </h1>
-            <p className="text-[#1B2A4A] text-sm leading-relaxed mb-5 max-w-sm">
-              India&apos;s AA-Class infrastructure contractor — ground improvement, pile foundations, bridges &amp; railways across 8 states since 2015.
-            </p>
-            <div className="flex gap-2.5 mb-4">
-              <Link
-                href="/contact"
-                className="group flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3 bg-gold-500 text-navy-900 font-bold rounded-xl text-xs whitespace-nowrap hover:bg-gold-400 transition-colors shadow-[0_2px_12px_rgba(242,185,28,0.35)]"
-              >
-                Request a Quote <ArrowRight className="w-3 h-3 shrink-0 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-              <Link
-                href="/services"
-                className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-navy-800/25 text-navy-800 rounded-xl text-xs whitespace-nowrap hover:border-gold-500 hover:text-gold-500 transition-colors"
-              >
-                Explore Services
-              </Link>
+        {/* MOBILE */}
+        {DARK_HERO ? (
+          /* Dark mobile: full-bleed slideshow (client component) */
+          <HeroMobileDark founded={SITE.founded} />
+        ) : (
+          /* Light mobile: static copy + rounded photo card */
+          <div className="lg:hidden flex flex-col">
+            <div className="h-[72px]" />
+            <div className="px-5 pt-5 pb-6">
+              <span className="inline-flex items-center px-3 py-1 bg-gold-500 text-navy-900 font-mono text-[9px] font-bold tracking-[0.15em] uppercase rounded-full mb-4 select-none">
+                AA Class PWD Contractor · Since {SITE.founded}
+              </span>
+              <h1 className="font-display font-black tracking-tight text-[clamp(2rem,8vw,2.6rem)] leading-[1.04] text-navy-900 mb-3">
+                Engineering{" "}
+                <span className="text-gold-500">Strength.</span>
+                <br />Delivering Certainty.
+              </h1>
+              <p className="text-[#1B2A4A] text-sm leading-relaxed mb-5 max-w-sm">
+                India&apos;s AA-Class infrastructure contractor — ground improvement, pile foundations, bridges &amp; railways across 8 states since 2015.
+              </p>
+              <div className="flex gap-2.5 mb-4">
+                <Link
+                  href="/contact"
+                  className="group flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3 bg-gold-500 text-navy-900 font-bold rounded-xl text-xs whitespace-nowrap hover:bg-gold-400 transition-colors shadow-[0_2px_12px_rgba(242,185,28,0.35)]"
+                >
+                  Request a Quote <ArrowRight className="w-3 h-3 shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+                <Link
+                  href="/services"
+                  className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-navy-800/25 text-navy-800 rounded-xl text-xs whitespace-nowrap hover:border-gold-500 hover:text-gold-500 transition-colors"
+                >
+                  Explore Services
+                </Link>
+              </div>
+              <p className="font-mono text-[10px] text-slate-400 tracking-widest">8 States · 9 Projects</p>
             </div>
-            <p className="font-mono text-[10px] text-slate-400 tracking-widest">8 States · 9 Projects</p>
-          </div>
-
-          {/* ② MAP — secondary, below fold, legend fully visible */}
-          <div className="mx-5 border-t border-line-200 mb-4" />
-          <div
-            className="px-4"
-            style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom))" }}
-          >
-            <div className="mx-auto" style={{ maxWidth: "300px", maxHeight: "50svh" }}>
-              <HeroMap lightBg />
+            <div className="mx-5 border-t border-line-200 mb-3" />
+            <div className="px-4" style={{ paddingBottom: "max(1.25rem, env(safe-area-inset-bottom))" }}>
+              <div
+                className="relative w-full rounded-2xl overflow-hidden"
+                style={{ aspectRatio: "3/2", boxShadow: "0 4px 24px rgba(15,27,61,0.14), 0 12px 40px rgba(15,27,61,0.12)" }}
+              >
+                <Image src="/images/services/hero-feature.png" alt="Parkline Infra piling operations" fill className="object-cover object-center" priority sizes="92vw" />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(15,27,61,0.35) 0%, transparent 45%)" }} />
+                <span className="absolute bottom-2.5 left-2.5 inline-flex items-center px-2 py-0.5 font-mono text-[8px] font-semibold tracking-[0.12em] uppercase rounded-full select-none" style={{ background: "rgba(15,27,61,0.55)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", border: "1px solid rgba(242,185,28,0.3)", color: "#F2B91C" }}>
+                  AA-CLASS · 8 STATES · SINCE 2015
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
         {/* DESKTOP — extracted to client component for framer-motion animate */}
-        <HeroDesktop founded={SITE.founded} />
+        {DARK_HERO ? (
+          <HeroDesktopDark founded={SITE.founded} />
+        ) : (
+          <HeroDesktop founded={SITE.founded} />
+        )}
 
       </section>
 
