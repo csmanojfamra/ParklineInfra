@@ -141,7 +141,7 @@ export default function Footer() {
           <p className="text-xs text-white/40">
             © {new Date().getFullYear()} Parkline Infra Private Limited. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-xs text-white/40">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-white/40">
             <Link href="/privacy" className="hover:text-gold-400 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-gold-400 transition-colors">Terms & Conditions</Link>
             <Link href="/sitemap.xml" className="hover:text-gold-400 transition-colors">Sitemap</Link>

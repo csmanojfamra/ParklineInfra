@@ -102,8 +102,8 @@ export default async function BlogPostPage({
             ]}
           />
           <div className="mt-8 max-w-3xl">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-xs text-gold-500 bg-gold-500/10 px-2 py-0.5 rounded-md">
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5 mb-4">
+              <span className="font-mono text-xs text-gold-500 bg-gold-500/10 px-2 py-0.5 rounded-md whitespace-nowrap">
                 {post.category}
               </span>
               <div className="flex items-center gap-1 text-xs text-ink-700/40 font-mono">

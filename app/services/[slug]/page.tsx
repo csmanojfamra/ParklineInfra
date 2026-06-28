@@ -100,7 +100,7 @@ export default async function ServicePage({
           />
           <div className="mt-8 max-w-3xl">
             <FadeUp delay={0.1}>
-              <span className="inline-block px-3 py-1 bg-gold-500/15 border border-gold-500/30 text-gold-500 font-mono text-xs rounded-lg mb-5 uppercase tracking-wider">
+              <span className="inline-block px-3 py-1 bg-gold-500/15 border border-gold-500/30 text-gold-500 font-mono text-[10px] sm:text-xs rounded-lg mb-5 uppercase tracking-wide sm:tracking-wider max-w-full truncate">
                 {service.tagline}
               </span>
             </FadeUp>
