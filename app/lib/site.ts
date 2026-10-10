@@ -42,12 +42,12 @@ export const FOUNDER = {
   name: "Mr. Gajanand Sharma",
   title: "Founder & Managing Director",
   traits: ["Visionary", "Result-Driven", "Disciplined"],
-  bio: "Mr. Gajanand Sharma is a first-generation entrepreneur from Jaipur who founded Parkline Infra Private Limited in 2015 with a singular conviction: that disciplined engineering execution is the true foundation of India's infrastructure growth. With deep expertise in ground improvement, foundation systems, railway infrastructure, and large-scale project management, he has built Parkline Infra into an AA-Class PWD-registered contractor trusted by Adani, L&T, GMR, and KEC across eight Indian states. His leadership philosophy is simple — infrastructure is risk management, and every project is a commitment.",
+  bio: "Mr. Gajanand Sharma is a first-generation entrepreneur from Jaipur who founded Parkline Infra Private Limited in 2015 with a singular conviction: that disciplined engineering execution is the true foundation of India's infrastructure growth. With deep expertise in ground improvement, foundation systems, railway infrastructure, and large-scale project management, he has built Parkline Infra into an AA-Class PWD-registered contractor trusted by Adani, L&T, GMR, and KEC across India. His leadership philosophy is simple — infrastructure is risk management, and every project is a commitment.",
 };
 
 export const STATS = [
-  { value: 10, suffix: "+", label: "Years of Excellence" },
-  { value: 8, suffix: "", label: "States of Presence" },
+  { value: 9, suffix: "+", label: "Major Clients" },
+  { value: 10, suffix: "+", label: "States Covered" },
   { value: 9, suffix: "", label: "Flagship Projects" },
   { value: 50, suffix: "+", label: "Projects Delivered" },
 ];

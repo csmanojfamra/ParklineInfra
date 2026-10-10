@@ -2,8 +2,8 @@
 
 // Optimised WebP at 1600×900 (231–296 KB each) — next/image serves further-compressed variants
 export const SERVICE_IMAGES: Record<string, string> = {
-  "ground-improvement":              "/images/services/ground-improvement.webp",
-  "pile-foundation":                 "/images/services/pile-foundation.webp",
+  "ground-improvement":              "/images/services/ground-improvement.png",
+  "pile-foundation":                 "/images/services/pile-foundation.png",
   "structure-work":                  "/images/services/structure-work.webp",
   "fabrication-steel-structures":    "/images/services/steel-fabrication.webp",
   "building-construction":           "/images/services/building-construction.webp",

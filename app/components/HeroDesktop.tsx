@@ -55,11 +55,11 @@ export default function HeroDesktop({ founded }: Props) {
               <p className="text-[#1B2A4A] text-base leading-relaxed mb-5 max-w-xl">
                 India&apos;s trusted AA-Class infrastructure contractor — delivering ground
                 improvement, deep pile foundations, bridges, steel fabrication and railway
-                structures across eight states since 2015.
+                structures across India since 2015.
               </p>
 
               <div className="flex flex-wrap gap-2 mb-7">
-                {["8 States", "9 Marquee Projects", "Railway-Approved RRV", "AA-Class PWD"].map((b) => (
+                {["Pan-India", "9 Marquee Projects", "Railway-Approved RRV", "AA-Class PWD"].map((b) => (
                   <span key={b} className="px-3 py-1.5 border border-[#1B2A4A]/30 text-[#1B2A4A] text-xs font-mono tracking-wide rounded-lg bg-navy-800/4">
                     {b}
                   </span>
@@ -160,7 +160,7 @@ export default function HeroDesktop({ founded }: Props) {
                       color: "#F2B91C",
                     }}
                   >
-                    AA-CLASS · 8 STATES · SINCE 2015
+                    AA-CLASS · PAN-INDIA · SINCE 2015
                   </span>
                 </motion.div>
               </div>

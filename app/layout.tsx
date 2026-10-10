@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Barlow_Condensed, JetBrains_Mono } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { SITE } from "./lib/site";
@@ -15,17 +15,11 @@ const inter = Inter({
   display: "swap",
 });
 
-const barlow = Barlow_Condensed({
+const playfair = Playfair_Display({
   subsets: ["latin"],
-  variable: "--font-barlow",
-  weight: ["600", "700", "800", "900"],
-  style: ["normal"],
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -74,7 +68,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${barlow.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
 <body className="font-body bg-paper-50 text-ink-700 antialiased">
         {/* Google Translate */}
         <Script id="gt-init" strategy="afterInteractive">{`
@@ -95,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SchemaOrg />
         <SmoothScrollProvider>
           <Header />
-          <main>{children}</main>
+          <main className="pt-[84px] lg:pt-[117px]">{children}</main>
           <Footer />
           <WhatsAppFloat />
         </SmoothScrollProvider>

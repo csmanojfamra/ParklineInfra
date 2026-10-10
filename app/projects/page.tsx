@@ -14,38 +14,84 @@ export default function ProjectsPage() {
 
   return (
     <>
-      {/* ── HERO ───────────────────────────────────────────────────────── */}
-      <section className="relative bg-navy-900 pt-32 pb-20 overflow-hidden min-h-[50vh] flex items-end">
-        <div className="absolute inset-0">
+      {/* ── HERO — Keller split: navy left + chevron + image right ──────── */}
+      <section className="relative overflow-hidden bg-navy-900">
+
+        {/* Mobile */}
+        <div className="lg:hidden relative min-h-[52vw] flex items-end">
           <Image
             src={SECTION_IMAGES.bridgeConstruction}
             alt="Infrastructure projects"
             fill
             priority
-            className="object-cover opacity-20"
+            sizes="100vw"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-navy-900/50 via-navy-900/85 to-navy-900" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/55 to-navy-900/15" />
+          <div className="relative px-4 sm:px-6 pb-10 pt-20 w-full">
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Projects" }]} />
+            <div className="mt-4">
+              <p className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-gold-500 mb-2">Project Portfolio</p>
+              <div className="w-10 h-[2px] bg-gold-500 mb-4" />
+              <h1 className="font-display font-black tracking-tight text-[clamp(2rem,8vw,3rem)] leading-[1.05] text-white">
+                9 Flagship <span className="text-gold-500 italic">Projects</span>
+              </h1>
+            </div>
+          </div>
         </div>
-        <div className="absolute inset-0 bg-dot-pattern opacity-8 pointer-events-none" />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Projects" }]} />
-          <div className="mt-8 max-w-3xl">
-            <FadeUp delay={0.1}>
-              <p className="eyebrow text-gold-500 mb-5">Project Portfolio</p>
-            </FadeUp>
-            <FadeUp delay={0.2}>
-              <h1 className="font-display font-black tracking-tight text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-white mb-4">
-                9 Flagship<br />
+        {/* Desktop */}
+        <div
+          className="hidden lg:flex relative overflow-hidden"
+          style={{ minHeight: "clamp(340px, 44vh, 520px)" }}
+        >
+          {/* Left navy panel */}
+          <div
+            className="relative z-10 bg-navy-900 flex flex-col justify-center flex-shrink-0"
+            style={{ width: "52%", padding: "2.5rem 4vw 2.5rem 5vw" }}
+          >
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Projects" }]} />
+            <div className="mt-6">
+              <p className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-gold-500 mb-2">
+                Project Portfolio
+              </p>
+              <div className="w-10 h-[2px] bg-gold-500 mb-5" />
+              <h1
+                className="font-display font-black text-white leading-[1.05]"
+                style={{ fontSize: "clamp(2rem, 3.6vw, 3.5rem)", letterSpacing: "-0.02em" }}
+              >
+                9 Flagship{" "}
                 <span className="text-gold-500 italic">Projects</span>
               </h1>
-            </FadeUp>
-            <FadeUp delay={0.3}>
-              <p className="text-white/60 text-lg leading-relaxed max-w-2xl">
-                From Adani Group&apos;s large-scale ground improvement to L&T&apos;s DFC corridors spanning five states —
-                a project record built on capability, scale, and delivery certainty.
+              <p className="text-white/55 text-[0.9rem] leading-relaxed mt-4 max-w-[38ch]">
+                From Adani Group&apos;s large-scale ground improvement to L&T&apos;s DFC corridors spanning five states.
               </p>
-            </FadeUp>
+            </div>
+          </div>
+
+          {/* Right image panel */}
+          <div
+            className="absolute inset-y-0 right-0 z-20"
+            style={{
+              left: "38%",
+              clipPath: "polygon(22.6% 0%, 100% 0%, 100% 100%, 22.6% 100%, 0% 50%)",
+            }}
+          >
+            <Image
+              src="/images/services/structure-work.webp"
+              alt="Infrastructure projects"
+              fill
+              priority
+              sizes="65vw"
+              className="object-cover object-center"
+              style={{ filter: "contrast(1.06) saturate(1.12)" }}
+            />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "linear-gradient(to right, rgba(15,27,61,0.6) 0%, transparent 30%)",
+              }}
+            />
           </div>
         </div>
       </section>
@@ -59,7 +105,7 @@ export default function ProjectsPage() {
               <button
                 key={s.value}
                 onClick={() => setActive(s.value)}
-                className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold transition-all duration-200 ${
+                className={`px-4 py-2 text-xs font-mono font-semibold transition-all duration-200 ${
                   active === s.value
                     ? "bg-gold-500 text-navy-900 shadow-[0_2px_12px_rgba(242,185,28,0.35)]"
                     : "bg-white border border-line-200 text-slate-500 hover:border-gold-500/50 hover:text-gold-500"

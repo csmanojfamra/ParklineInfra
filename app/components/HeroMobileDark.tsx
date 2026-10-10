@@ -1,173 +1,173 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
+// ── Slide data (same set as desktop) ────────────────────────────────────────
 const SLIDES = [
-  { src: "/images/services/hero-feature.webp",  alt: "Aerial flyover of Parkline Infra piling operations", caption: "Elevated Flyover & Pile Foundation" },
-  { src: "/images/services/structure-work.png", alt: "Bridge girder construction",                          caption: "Major Bridge & RCC Structures" },
+  {
+    src: "/images/services/hero-feature.webp",
+    alt: "Aerial view of Parkline Infra piling operations",
+    heading: "Engineering Strength.\nDelivering Certainty.",
+    body: "AA-Class infrastructure — ground improvement, pile foundations, bridges & railways across India since 2015.",
+    caption: "Pile Foundation & Ground Improvement",
+  },
+  {
+    src: "/images/services/ground-improvement.webp",
+    alt: "Ground improvement machinery on site",
+    heading: "Expert Ground\nImprovement Solutions",
+    body: "From stone columns to dynamic compaction — engineered soil solutions for demanding foundations.",
+    caption: "Geotechnical Engineering",
+  },
+  {
+    src: "/images/services/pile-foundation.webp",
+    alt: "Piling rig on construction site",
+    heading: "Deep Pile Foundation\nExcellence",
+    body: "Driven piles, bored piles, precast concrete — load-bearing certainty on every project.",
+    caption: "Deep Foundation Works",
+  },
+  {
+    src: "/images/services/maintenance-rrv.webp",
+    alt: "Road Rail Vehicle on railway tracks",
+    heading: "Railway-Approved\nRRV Manufacturing",
+    body: "In-house Road Rail Vehicle manufacturing across EDFC/WDFC corridors.",
+    caption: "Railway Infrastructure",
+  },
 ];
-const SLIDE_DURATION = 5500;
-const FADE_DURATION  = 1200;
+
+const INTERVAL = 5500;
+// Mobile header height = main nav bar h-[72px]
+const MOBILE_HEADER = 80;
 
 interface Props { founded: number | string }
 
 export default function HeroMobileDark({ founded }: Props) {
   const reduced = useReducedMotion();
   const [current, setCurrent] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const next = () => setCurrent((c) => (c + 1) % SLIDES.length);
 
   useEffect(() => {
     if (reduced) return;
-    const advance = () => setCurrent(c => (c + 1) % SLIDES.length);
-    const start = () => { timerRef.current = setInterval(advance, SLIDE_DURATION); };
-    const stop  = () => { if (timerRef.current) clearInterval(timerRef.current); };
-    const onVis = () => document.hidden ? stop() : start();
-    document.addEventListener("visibilitychange", onVis);
-    start();
-    return () => { stop(); document.removeEventListener("visibilitychange", onVis); };
-  }, [reduced]);
+    const t = setInterval(next, INTERVAL);
+    return () => clearInterval(t);
+  }, [reduced]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const slide = SLIDES[current];
 
   return (
-    <div className="lg:hidden relative overflow-hidden">
-
-      {/* Background slideshow */}
-      <div className="absolute inset-0 bg-[#0a1223]">
+    <div
+      className="lg:hidden flex flex-col"
+      style={{ minHeight: "calc(88svh - 84px)" }}
+    >
+      {/* ── Image section (top ~52%) ───────────────────────────────────── */}
+      <div className="relative overflow-hidden" style={{ height: "52svh", minHeight: "200px" }}>
+        {/* Cross-fade images */}
         {SLIDES.map((s, i) => (
           <div
             key={s.src}
             className="absolute inset-0"
             style={{
               opacity: i === current ? 1 : 0,
-              transition: reduced ? "none" : `opacity ${FADE_DURATION}ms ease-in-out`,
+              transition: reduced ? "none" : "opacity 700ms ease-in-out",
             }}
           >
             <Image
               src={s.src}
-              alt={i === 0 ? s.alt : ""}
-              aria-hidden={i !== current}
+              alt={i === current ? s.alt : ""}
               fill
               className="object-cover object-center"
               priority={i === 0}
               sizes="100vw"
+              aria-hidden={i !== current}
             />
           </div>
         ))}
-      </div>
 
-      {/* Scrim */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(10,18,44,0.85) 0%, rgba(10,18,44,0.55) 55%, rgba(10,18,44,0.90) 100%)",
-        }}
-      />
+        {/* Credential badge — top left */}
+        <div className="absolute top-3 left-4 z-10">
+          <span className="inline-flex items-center px-2.5 py-1 bg-gold-500 text-navy-900 font-mono text-[8px] font-bold tracking-[0.14em] uppercase rounded-full select-none">
+            AA Class PWD · Since {founded}
+          </span>
+        </div>
 
-      {/* Copy — natural height; pb-20 creates the image-reveal band + room for caption */}
-      <div className="relative z-10 px-5 pb-20" style={{ paddingTop: "calc(72px + 1.25rem)" }}>
-        {/* Eyebrow badge */}
-        <span
-          className="inline-flex items-center px-3 py-1 font-mono text-[9px] font-bold tracking-[0.18em] uppercase rounded-full mb-4 select-none"
-          style={{ background: "#E8A92C", color: "#0a1223" }}
-        >
-          AA Class PWD Contractor · Since {founded}
-        </span>
-
-        {/* H1 */}
-        <h1
-          className="font-display font-black text-[clamp(2rem,8vw,2.6rem)] text-white mb-3"
-          style={{ letterSpacing: "-0.02em", lineHeight: "0.97", paddingBottom: "0.12em" }}
-        >
-          Engineering{" "}
-          <span style={{ color: "#E8A92C" }}>Strength.</span>
-          <br />Delivering Certainty.
-        </h1>
-
-        {/* Paragraph */}
-        <p
-          className="text-sm leading-[1.65] mb-5 max-w-[38ch]"
-          style={{ color: "rgba(255,255,255,0.72)" }}
-        >
-          India&apos;s AA-Class contractor — ground improvement, foundations, bridges
-          &amp; railways across 8 states.
-        </p>
-
-        {/* CTAs */}
-        <div className="flex gap-2.5">
-          <Link
-            href="/contact"
-            className="group flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3 font-bold rounded-xl text-xs whitespace-nowrap transition-colors shadow-[0_2px_12px_rgba(232,169,44,0.35)]"
-            style={{ background: "#E8A92C", color: "#0a1223" }}
-          >
-            Request a Quote
-            <ArrowRight className="w-3 h-3 shrink-0 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-          <Link
-            href="/services"
-            className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-white/45 text-white rounded-xl text-xs whitespace-nowrap hover:border-gold-500 hover:text-gold-500 transition-colors"
-          >
-            Explore Services
-          </Link>
+        {/* Bottom caption on image */}
+        <div className="absolute bottom-3 left-4 z-10">
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={`mcap-${current}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35 }}
+              className="font-mono text-[8px] text-white/60 tracking-[0.18em] uppercase"
+            >
+              {slide.caption}
+            </motion.span>
+          </AnimatePresence>
         </div>
       </div>
 
-      {/* Bottom caption — absolutely pinned, clears chat widget + safe area */}
-      <div
-        className="absolute left-5 z-20"
-        style={{ bottom: "max(1.25rem, env(safe-area-inset-bottom))" }}
-      >
-        <div className="flex flex-col items-start gap-1.5">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={reduced ? { opacity: 1 } : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={reduced ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="flex items-center gap-2 px-2.5 py-1 rounded-full select-none"
-              style={{
-                background: "rgba(10,18,44,0.65)",
-                backdropFilter: "blur(12px)",
-                WebkitBackdropFilter: "blur(12px)",
-                border: "1px solid rgba(255,255,255,0.12)",
-              }}
-            >
-              <span
-                className="font-mono text-[7px] font-semibold tracking-[0.15em] uppercase whitespace-nowrap"
-                style={{ color: "#E8A92C" }}
-              >
-                CAPABILITY
-              </span>
-              <span className="w-px h-2.5 shrink-0" style={{ background: "rgba(255,255,255,0.20)" }} />
-              <span
-                className="text-[10px] font-normal whitespace-nowrap"
-                style={{ color: "rgba(255,255,255,0.85)" }}
-              >
-                {SLIDES[current].caption}
-              </span>
-            </motion.div>
-          </AnimatePresence>
+      {/* ── Gold text panel (bottom ~48%) ─────────────────────────────── */}
+      <div className="bg-gold-500 flex-1 flex flex-col justify-center px-5 pt-6 pb-7">
 
-          {!reduced && (
-            <div className="flex items-center gap-1.5 pl-0.5">
-              {SLIDES.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                  className="rounded-full transition-all duration-300"
-                  style={{
-                    width:      i === current ? "18px" : "6px",
-                    height:     "6px",
-                    background: i === current ? "rgba(232,169,44,0.9)" : "rgba(255,255,255,0.30)",
-                  }}
-                />
-              ))}
-            </div>
-          )}
+        {/* Heading */}
+        <AnimatePresence mode="wait">
+          <motion.h1
+            key={`mh-${current}`}
+            initial={reduced ? { opacity: 1 } : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reduced ? { opacity: 1 } : { opacity: 0, y: -8 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display font-bold text-navy-900 whitespace-pre-line mb-3"
+            style={{
+              fontSize: "clamp(1.65rem, 6vw, 2.2rem)",
+              lineHeight: "1.12",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {slide.heading}
+          </motion.h1>
+        </AnimatePresence>
+
+        {/* Body */}
+        <AnimatePresence mode="wait">
+          <motion.p
+            key={`mb-${current}`}
+            initial={reduced ? { opacity: 1 } : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduced ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.35, delay: 0.07 }}
+            className="text-navy-900/65 text-sm leading-relaxed mb-5 max-w-[36ch]"
+          >
+            {slide.body}
+          </motion.p>
+        </AnimatePresence>
+
+        {/* CTA */}
+        <Link
+          href="/contact"
+          className="self-start inline-flex items-center gap-2 border-2 border-navy-900 text-navy-900 px-5 py-2.5 font-bold text-sm hover:bg-navy-900 hover:text-gold-500 transition-all duration-200 mb-5"
+        >
+          Request a Quote
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+
+        {/* Slide dots */}
+        <div className="flex items-center gap-2">
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="h-[3px] transition-all duration-300"
+              style={{
+                width: i === current ? "24px" : "12px",
+                background: i === current ? "#0F1B3D" : "rgba(15,27,61,0.22)",
+              }}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -6,7 +6,6 @@ import { CheckCircle, ArrowRight, Phone, MessageSquare } from "lucide-react";
 import { SERVICES } from "../../data/services";
 import { PROJECTS } from "../../data/projects";
 import { SERVICE_IMAGES, PROJECT_IMAGES, SECTION_IMAGES } from "../../lib/images";
-import { SERVICE_BLUR } from "../../lib/blur-placeholders";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import FaqAccordion from "../../components/FaqAccordion";
 import CTABand from "../../components/CTABand";
@@ -70,45 +69,97 @@ export default async function ServicePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      {/* ── HERO with photo ─────────────────────────────────────────────── */}
-      <section className="relative bg-navy-900 pt-32 pb-20 overflow-hidden min-h-[50vh] flex items-end">
-        <div className="absolute inset-0">
+      {/* ── HERO — Keller split: navy left panel + chevron + image right ── */}
+      <section className="relative overflow-hidden bg-navy-900">
+
+        {/* ── Mobile hero (stacked) ─────────────────────────────────────── */}
+        <div className="lg:hidden relative min-h-[52vw] flex items-end">
           <Image
             src={heroImg}
             alt={service.title}
             fill
             priority
             sizes="100vw"
-            placeholder="blur"
-            blurDataURL={SERVICE_BLUR[service.slug]}
             className="object-cover object-center"
           />
-          {/* Bottom scrim: strong navy at foot (behind breadcrumb + H1), fades up */}
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/50 to-navy-900/10" />
-          {/* Left scrim: protects text column, fades right so photo reads clearly */}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900/80 via-navy-900/35 to-transparent" />
-        </div>
-        <div className="absolute inset-0 bg-dot-pattern opacity-8 pointer-events-none" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <Breadcrumbs
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Services", href: "/services" },
-              { label: service.shortTitle },
-            ]}
-          />
-          <div className="mt-8 max-w-3xl">
-            <FadeUp delay={0.1}>
-              <span className="inline-block px-3 py-1 bg-gold-500/15 border border-gold-500/30 text-gold-500 font-mono text-[10px] sm:text-xs rounded-lg mb-5 uppercase tracking-wide sm:tracking-wider max-w-full truncate">
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/55 to-navy-900/15" />
+          <div className="relative px-4 sm:px-6 pb-10 pt-20 w-full">
+            <Breadcrumbs
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: service.shortTitle },
+              ]}
+            />
+            <div className="mt-4">
+              <p className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-gold-500 mb-2">
                 {service.tagline}
-              </span>
-            </FadeUp>
-            <FadeUp delay={0.2}>
-              <h1 className="font-display font-black tracking-tight text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-white">
+              </p>
+              <div className="w-10 h-[2px] bg-gold-500 mb-4" />
+              <h1 className="font-display font-black tracking-tight text-[clamp(2rem,8vw,3rem)] leading-[1.05] text-white">
                 {service.title}
               </h1>
-            </FadeUp>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Desktop hero (Keller split) ──────────────────────────────── */}
+        <div
+          className="hidden lg:flex relative overflow-hidden"
+          style={{ minHeight: "clamp(340px, 44vh, 520px)" }}
+        >
+          {/* Left navy panel — 52% wide, chevron tip at 38% */}
+          <div
+            className="relative z-10 bg-navy-900 flex flex-col justify-center flex-shrink-0"
+            style={{ width: "52%", padding: "2.5rem 4vw 2.5rem 5vw" }}
+          >
+            <Breadcrumbs
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: service.shortTitle },
+              ]}
+            />
+            <div className="mt-6">
+              <p className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-gold-500 mb-2">
+                {service.tagline}
+              </p>
+              <div className="w-10 h-[2px] bg-gold-500 mb-5" />
+              <h1
+                className="font-display font-black text-white leading-[1.05]"
+                style={{ fontSize: "clamp(1.6rem, 3vw, 3.2rem)", letterSpacing: "-0.02em" }}
+              >
+                {service.title}
+              </h1>
+            </div>
+          </div>
+
+          {/* Right image panel — starts at 38%, chevron clip */}
+          <div
+            className="absolute inset-y-0 right-0 z-20"
+            style={{
+              left: "38%",
+              clipPath: "polygon(22.6% 0%, 100% 0%, 100% 100%, 22.6% 100%, 0% 50%)",
+            }}
+          >
+            <Image
+              src={heroImg}
+              alt={service.title}
+              fill
+              priority
+              sizes="65vw"
+              className="object-cover object-left"
+              style={{ filter: "contrast(1.06) saturate(1.12)" }}
+            />
+            {/* Gradient overlays — left navy bleed + top/bottom vignette */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `
+                  linear-gradient(to right, rgba(15,27,61,0.6) 0%, transparent 30%)
+                `,
+              }}
+            />
           </div>
         </div>
       </section>

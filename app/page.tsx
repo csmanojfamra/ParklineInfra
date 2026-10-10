@@ -35,14 +35,13 @@ const CLIENT_LOGOS = [
   { name: "KEC International", logo: "/images/clients/kec.png" },
   { name: "Dilip Buildcon", logo: "/images/clients/dilip-buildcon.png" },
   { name: "Rays Power Infra", logo: "/images/clients/rays-power.png" },
-  { name: "PWD Rajasthan", logo: "/images/clients/pwd.png" },
   { name: "RVNL", logo: "/images/clients/rvnl.png" },
 ];
 
 const HOME_FAQS = [
   {
     q: "What makes Parkline Infra different from other infrastructure contractors?",
-    a: "Parkline Infra holds the AA Class PWD contractor classification — the highest government rating in Rajasthan — and combines this with in-house manufacturing (RRVs), multi-discipline capability (ground improvement through fabrication), and a proven track record with Adani, L&T, GMR, and KEC across 8 states.",
+    a: "Parkline Infra holds the AA Class PWD contractor classification — the highest government rating in Rajasthan — and combines this with in-house manufacturing (RRVs), multi-discipline capability (ground improvement through fabrication), and a proven track record with Adani, L&T, GMR, and KEC across India.",
   },
   {
     q: "What is the AA Class PWD contractor classification?",
@@ -60,7 +59,7 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-line-200">
+      <section className="relative overflow-hidden border-b border-line-200 bg-gold-500">
 
         {/* LIGHT variant: flat paper background + dot texture */}
         {!DARK_HERO && (
@@ -88,7 +87,7 @@ export default function HomePage() {
                 <br />Delivering Certainty.
               </h1>
               <p className="text-[#1B2A4A] text-sm leading-relaxed mb-5 max-w-sm">
-                India&apos;s AA-Class infrastructure contractor — ground improvement, pile foundations, bridges &amp; railways across 8 states since 2015.
+                India&apos;s AA-Class infrastructure contractor — ground improvement, pile foundations, bridges &amp; railways across India since 2015.
               </p>
               <div className="flex gap-2.5 mb-4">
                 <Link
@@ -104,7 +103,7 @@ export default function HomePage() {
                   Explore Services
                 </Link>
               </div>
-              <p className="font-mono text-[10px] text-slate-400 tracking-widest">8 States · 9 Projects</p>
+              <p className="font-mono text-[10px] text-slate-400 tracking-widest">Pan-India · 9 Projects</p>
             </div>
             <div className="mx-5 border-t border-line-200 mb-3" />
             <div className="px-4" style={{ paddingBottom: "max(1.25rem, env(safe-area-inset-bottom))" }}>
@@ -115,7 +114,7 @@ export default function HomePage() {
                 <Image src="/images/services/hero-feature.png" alt="Parkline Infra piling operations" fill className="object-cover object-center" priority sizes="92vw" />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(15,27,61,0.35) 0%, transparent 45%)" }} />
                 <span className="absolute bottom-2.5 left-2.5 inline-flex items-center px-2 py-0.5 font-mono text-[8px] font-semibold tracking-[0.12em] uppercase rounded-full select-none" style={{ background: "rgba(15,27,61,0.55)", backdropFilter: "blur(10px)", WebkitBackdropFilter: "blur(10px)", border: "1px solid rgba(242,185,28,0.3)", color: "#F2B91C" }}>
-                  AA-CLASS · 8 STATES · SINCE 2015
+                  AA-CLASS · PAN-INDIA · SINCE 2015
                 </span>
               </div>
             </div>
@@ -132,27 +131,16 @@ export default function HomePage() {
       </section>
 
       {/* ── STATS ────────────────────────────────────────────────────────── */}
-      <section className="relative bg-navy-900 py-16 overflow-hidden">
-        {/* Background photo with duotone */}
-        <div className="absolute inset-0">
-          <Image
-            src={SECTION_IMAGES.about}
-            alt=""
-            fill
-            className="object-cover opacity-15"
-            aria-hidden
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-900 via-navy-900/95 to-navy-900" />
-        </div>
-        <div className="absolute inset-0 bg-dot-pattern opacity-10 pointer-events-none" />
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Stagger className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="relative bg-navy-900 overflow-hidden" style={{ borderTop: "4px solid #F2B91C" }}>
+        <div className="absolute inset-0 bg-dot-pattern opacity-8 pointer-events-none" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
             {STATS.map((s) => (
-              <StaggerItem key={s.label}>
+              <div key={s.label} className="px-6 py-8 lg:px-10">
                 <StatCounter value={s.value} suffix={s.suffix} label={s.label} light />
-              </StaggerItem>
+              </div>
             ))}
-          </Stagger>
+          </div>
         </div>
       </section>
 
@@ -168,32 +156,32 @@ export default function HomePage() {
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {SERVICES.map((s, i) => (
               <StaggerItem key={s.slug}>
-                <Link href={`/services/${s.slug}`} className="group relative block bg-white rounded-2xl overflow-hidden border border-line-200 hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-1" style={{ boxShadow: "var(--shadow-card)" }}>
+                <Link href={`/services/${s.slug}`} className="group relative block bg-white overflow-hidden border border-line-200 hover:border-gold-500/60 transition-all duration-300" style={{ boxShadow: "var(--shadow-card)" }}>
+                  {/* Gold left accent bar on hover */}
+                  <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                   {/* Photo */}
-                  <div className="relative h-40 overflow-hidden">
+                  <div className="relative h-44 overflow-hidden">
                     <Image
                       src={SERVICE_IMAGES[s.slug] ?? SECTION_IMAGES.about}
                       alt={s.title}
                       fill
                       sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      placeholder="blur"
-                      blurDataURL={SERVICE_BLUR[s.slug]}
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-103"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/70 via-navy-900/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-900/75 via-navy-900/15 to-transparent" />
                     <div className="absolute top-3 left-3">
-                      <span className="font-mono text-[10px] text-white/70 bg-navy-900/60 backdrop-blur-sm px-2 py-0.5 rounded-md">
+                      <span className="font-mono text-[10px] font-bold text-white/80 tracking-widest">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
                   </div>
                   {/* Content */}
-                  <div className="p-5">
-                    <h3 className="font-display font-bold text-lg text-navy-800 leading-tight mb-1.5 group-hover:text-gold-500 transition-colors">
+                  <div className="p-5 border-t border-line-200">
+                    <h3 className="font-display font-bold text-[17px] text-navy-800 leading-snug mb-1.5 group-hover:text-gold-500 transition-colors">
                       {s.shortTitle}
                     </h3>
-                    <p className="text-sm text-ink-700/60 leading-relaxed line-clamp-2">{s.tagline}</p>
-                    <div className="mt-4 flex items-center gap-1 text-xs font-mono text-gold-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                    <p className="text-[13px] text-ink-700/55 leading-relaxed line-clamp-2">{s.tagline}</p>
+                    <div className="mt-4 flex items-center gap-1.5 text-[11px] font-mono font-bold text-gold-500 tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-200 uppercase">
                       Learn more <ArrowRight className="w-3 h-3" />
                     </div>
                   </div>
@@ -204,14 +192,14 @@ export default function HomePage() {
             <StaggerItem>
               <Link
                 href="/services"
-                className="group flex flex-col justify-between bg-navy-900 rounded-2xl p-6 border border-navy-800 hover:border-gold-500 transition-all duration-300 h-full min-h-[240px]"
+                className="group flex flex-col justify-between bg-navy-900 p-6 border border-navy-800 hover:border-gold-500 transition-all duration-300 h-full min-h-[240px]"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
                 <p className="eyebrow text-gold-500">View All Services</p>
                 <div>
-                  <p className="text-white/50 text-sm mb-4">Full capability overview — 7 service lines across infrastructure disciplines.</p>
-                  <div className="inline-flex items-center gap-2 px-4 py-2 border border-gold-500/40 text-gold-500 rounded-xl text-xs font-mono group-hover:bg-gold-500/10 transition-colors">
-                    Explore <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  <p className="text-white/50 text-sm mb-5 leading-relaxed">Full capability overview — 7 service lines across infrastructure disciplines.</p>
+                  <div className="inline-flex items-center gap-2 px-4 py-2.5 border border-gold-500/40 text-gold-500 text-xs font-mono font-bold tracking-wider uppercase group-hover:bg-gold-500/10 transition-colors">
+                    Explore All <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </div>
               </Link>
@@ -244,24 +232,24 @@ export default function HomePage() {
             </h2>
           </FadeUp>
 
-          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/8">
             {WHY_CHOOSE.map((w, i) => {
               const Icon = ICON_MAP[w.icon] || Shield;
               return (
                 <StaggerItem key={i}>
-                  <div className="h-full bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-gold-500/30 hover:bg-white/8 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-5">
-                      <div className="w-10 h-10 rounded-xl bg-gold-500/15 flex items-center justify-center flex-shrink-0">
+                  <div className="h-full bg-navy-900 p-7 hover:bg-white/5 transition-all duration-300 group border-t-2 border-transparent hover:border-gold-500">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="w-11 h-11 bg-gold-500/12 flex items-center justify-center flex-shrink-0 group-hover:bg-gold-500/20 transition-colors">
                         <Icon className="w-5 h-5 text-gold-500" />
                       </div>
-                      <span className="font-mono text-3xl text-white/6 font-bold select-none" aria-hidden>
+                      <span className="font-mono text-4xl text-white/6 font-black select-none leading-none" aria-hidden>
                         {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <h3 className="font-display font-bold text-xl text-white mb-2 leading-tight">
+                    <h3 className="font-display font-bold text-xl text-white mb-2.5 leading-tight group-hover:text-gold-500 transition-colors">
                       {w.title}
                     </h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{w.desc}</p>
+                    <p className="text-white/45 text-sm leading-relaxed">{w.desc}</p>
                   </div>
                 </StaggerItem>
               );
@@ -271,7 +259,7 @@ export default function HomePage() {
           <FadeUp delay={0.3} className="mt-10 text-center">
             <Link
               href="/why-parkline"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-gold-500/40 text-gold-500 rounded-xl hover:bg-gold-500/10 transition-colors font-mono text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 border border-gold-500/40 text-gold-500 hover:bg-gold-500/10 transition-colors font-mono text-sm"
             >
               Full Capability Story <ArrowRight className="w-4 h-4" />
             </Link>
@@ -288,7 +276,7 @@ export default function HomePage() {
             action={
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-navy-800/25 text-navy-800 rounded-xl hover:border-gold-500 hover:text-gold-500 transition-all text-sm font-mono"
+                className="inline-flex items-center gap-2 px-5 py-2.5 border border-navy-800/25 text-navy-800 hover:border-gold-500 hover:text-gold-500 transition-colors text-sm font-mono"
               >
                 All 9 Projects <ArrowRight className="w-4 h-4" />
               </Link>
@@ -299,7 +287,7 @@ export default function HomePage() {
             {featuredProjects.map((p) => (
               <StaggerItem key={p.id}>
                 <div
-                  className="group relative bg-white rounded-2xl overflow-hidden border border-line-200 hover:border-gold-500/30 transition-all duration-300 hover:-translate-y-1"
+                  className="group relative bg-white overflow-hidden border border-line-200 hover:border-gold-500/40 transition-all duration-300"
                   style={{ boxShadow: "var(--shadow-card)" }}
                 >
                   {/* Photo */}
@@ -359,10 +347,10 @@ export default function HomePage() {
               <StaggerItem key={ind.id}>
                 <Link
                   href="/industries"
-                  className="group flex items-start gap-4 bg-white rounded-2xl p-5 border border-line-200 hover:border-gold-500/40 transition-all duration-200 hover:-translate-y-0.5"
+                  className="group flex items-start gap-4 bg-white p-5 border border-line-200 hover:border-gold-500/50 transition-all duration-200"
                   style={{ boxShadow: "var(--shadow-sm)" }}
                 >
-                  <div className="w-1 h-12 bg-gold-500/20 rounded-full flex-shrink-0 group-hover:bg-gold-500 transition-colors" />
+                  <div className="w-1 h-12 bg-gold-500/20 flex-shrink-0 group-hover:bg-gold-500 transition-colors" />
                   <div>
                     <h3 className="font-display font-bold text-lg text-navy-800 mb-1 group-hover:text-gold-500 transition-colors leading-tight">
                       {ind.title}
@@ -377,31 +365,42 @@ export default function HomePage() {
       </section>
 
       {/* ── CLIENTS ──────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-navy-900 relative overflow-hidden">
+      <section className="py-16 bg-navy-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-dot-pattern opacity-8 pointer-events-none" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp className="text-center mb-12">
+        <div className="relative">
+          <FadeUp className="text-center mb-10 px-4">
             <p className="eyebrow text-gold-500 mb-3">Clients & Partners</p>
             <h2 className="font-display font-black tracking-tight text-4xl md:text-5xl text-white leading-[1.08]">
               Trusted by India&apos;s{" "}
               <span className="text-gold-500 italic">Best</span>
             </h2>
           </FadeUp>
-          <Stagger className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {CLIENT_LOGOS.map((c) => (
-              <StaggerItem key={c.name}>
-                <div className="flex items-center justify-center bg-white/6 border border-white/10 rounded-2xl p-5 hover:border-gold-500/30 hover:bg-white/10 transition-all duration-200 h-20">
+          {/* Marquee strip */}
+          <div className="relative overflow-hidden py-8">
+            <div
+              className="flex items-center gap-6"
+              style={{
+                animation: "marquee 30s linear infinite",
+                width: "max-content",
+              }}
+            >
+              {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((c, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-center bg-white flex-shrink-0 px-8 py-4"
+                  style={{ width: "180px", height: "80px" }}
+                >
                   <Image
                     src={c.logo}
                     alt={c.name}
-                    width={100}
-                    height={40}
-                    className="object-contain max-h-10 brightness-0 invert opacity-60 hover:opacity-90 transition-opacity"
+                    width={120}
+                    height={48}
+                    className="object-contain max-h-10 w-auto"
                   />
                 </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

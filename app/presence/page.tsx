@@ -7,7 +7,7 @@ import CTABand from "../components/CTABand";
 import HeroRingAccent from "../components/HeroRingAccent";
 
 export const metadata: Metadata = {
-  title: "Pan-India Presence — 8 States, 9 Flagship Projects",
+  title: "Pan-India Presence — Projects Across India",
   description:
     "Parkline Infra has active presence and delivered projects across Rajasthan, Punjab, Uttar Pradesh, Gujarat, Haryana, Madhya Pradesh, Karnataka, Uttarakhand, Maharashtra, and Delhi NCR.",
   alternates: { canonical: "/presence" },
@@ -27,11 +27,11 @@ export default function PresencePage() {
           <div className="mt-8 max-w-3xl">
             <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold-500 mb-4">Our Footprint</p>
             <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-navy-900 mb-6">
-              8 States.<br />
+              Pan-India.<br />
               <span className="text-gold-500 italic">One Standard.</span>
             </h1>
             <p className="text-ink-700/70 text-lg leading-relaxed">
-              Parkline Infra has delivered projects across 8 Indian states,
+              Parkline Infra has delivered projects across India,
               working under India&apos;s largest infrastructure programmes — EDFC/WDFC, state highways, solar parks,
               and urban development.
             </p>
@@ -54,7 +54,7 @@ export default function PresencePage() {
       <section className="py-16 bg-paper-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline gap-3 mb-8">
-            <h2 className="font-display text-3xl text-navy-800">8 Presence States</h2>
+            <h2 className="font-display text-3xl text-navy-800">Active Presence States</h2>
             <span className="font-mono text-xs text-gold-500 bg-gold-500/10 px-2 py-0.5 rounded">Established Footprint</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

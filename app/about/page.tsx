@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { SITE, FOUNDER, STATS, WHY_CHOOSE } from "../lib/site";
+import { SECTION_IMAGES } from "../lib/images";
 import Breadcrumbs from "../components/Breadcrumbs";
-import HeroRingAccent from "../components/HeroRingAccent";
 import CTABand from "../components/CTABand";
 import StatCounter from "../components/StatCounter";
 import SectionHeading from "../components/SectionHeading";
@@ -36,34 +37,91 @@ const MILESTONES = [
   { year: "2018", title: "DFC Entry", desc: "Began work on Dedicated Freight Corridor projects with L&T Construction." },
   { year: "2019", title: "RRV Manufacturing", desc: "Developed and supplied Rail-Road Vehicles for the Mauritius Metro Project." },
   { year: "2021", title: "Adani Partnership", desc: "Awarded large-scale ground improvement contracts for Adani Group in Punjab." },
-  { year: "2023", title: "8 States", desc: "Active presence across 8 Indian states with 9 flagship project completions." },
+  { year: "2023", title: "Pan-India Operations", desc: "Projects delivered across 10+ states — from Rajasthan to Punjab, Gujarat, Kerala, and Delhi NCR." },
 ];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative bg-paper-50 pt-32 pb-20 overflow-hidden border-b border-line-200">
-        <div className="absolute inset-0 bg-dot-light opacity-50 pointer-events-none" />
-        <HeroRingAccent />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs
-            items={[{ label: "Home", href: "/" }, { label: "About Us" }]}
+      {/* Hero — Keller split */}
+      <section className="relative overflow-hidden bg-navy-900">
+
+        {/* Mobile */}
+        <div className="lg:hidden relative min-h-[52vw] flex items-end">
+          <Image
+            src={SECTION_IMAGES.about}
+            alt="Parkline Infra infrastructure"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
           />
-          <div className="mt-8 max-w-3xl">
-            <p className="font-mono text-xs tracking-[0.2em] uppercase text-gold-500 mb-4">
-              Our Story
-            </p>
-            <h1 className="font-display text-[clamp(2.5rem,5vw,5rem)] leading-[1.05] text-navy-900 mb-6">
-              Building India&apos;s<br />
-              <span className="text-gold-500 italic">Infrastructure</span><br />
-              Since 2015.
-            </h1>
-            <p className="text-ink-700/70 text-lg leading-relaxed max-w-2xl">
-              Parkline Infra Private Limited was founded with a conviction — that disciplined engineering
-              execution is the true foundation of India&apos;s infrastructure growth. A decade later, that
-              conviction is proven in concrete, steel, and soil across 8 Indian states.
-            </p>
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/55 to-navy-900/15" />
+          <div className="relative px-4 sm:px-6 pb-10 pt-20 w-full">
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} />
+            <div className="mt-4">
+              <p className="font-mono text-[10px] font-bold tracking-[0.2em] uppercase text-gold-500 mb-2">
+                Our Story
+              </p>
+              <div className="w-10 h-[2px] bg-gold-500 mb-4" />
+              <h1 className="font-display font-black tracking-tight text-[clamp(2rem,8vw,3rem)] leading-[1.05] text-white">
+                Building India&apos;s Infrastructure
+              </h1>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop — Keller split */}
+        <div
+          className="hidden lg:flex relative overflow-hidden"
+          style={{ minHeight: "clamp(360px, 46vh, 540px)" }}
+        >
+          {/* Left navy panel */}
+          <div
+            className="relative z-10 bg-navy-900 flex flex-col justify-center flex-shrink-0"
+            style={{ width: "52%", padding: "2.5rem 4vw 2.5rem 5vw" }}
+          >
+            <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "About Us" }]} />
+            <div className="mt-6">
+              <p className="font-mono text-[11px] font-bold tracking-[0.22em] uppercase text-gold-500 mb-2">
+                Our Story
+              </p>
+              <div className="w-10 h-[2px] bg-gold-500 mb-5" />
+              <h1
+                className="font-display font-black text-white leading-[1.05]"
+                style={{ fontSize: "clamp(1.8rem, 3.2vw, 3.4rem)", letterSpacing: "-0.02em" }}
+              >
+                Building India&apos;s<br />
+                <span className="text-gold-500 italic">Infrastructure</span><br />
+                Since 2015.
+              </h1>
+              <p className="text-white/55 text-[0.9rem] leading-relaxed mt-4 max-w-[40ch]">
+                AA Class PWD Contractor — engineering certainty across India for Adani, L&T, GMR, and KEC.
+              </p>
+            </div>
+          </div>
+
+          {/* Right image panel */}
+          <div
+            className="absolute inset-y-0 right-0 z-20"
+            style={{
+              left: "38%",
+              clipPath: "polygon(22.6% 0%, 100% 0%, 100% 100%, 22.6% 100%, 0% 50%)",
+            }}
+          >
+            <Image
+              src={SECTION_IMAGES.about}
+              alt="Parkline Infra infrastructure projects"
+              fill
+              priority
+              sizes="65vw"
+              className="object-cover object-left"
+              style={{ filter: "contrast(1.06) saturate(1.1)" }}
+            />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{ background: "linear-gradient(to right, rgba(15,27,61,0.6) 0%, transparent 30%)" }}
+            />
           </div>
         </div>
       </section>
@@ -97,16 +155,16 @@ export default function AboutPage() {
                   and one of India&apos;s trusted names in infrastructure construction and engineering.
                 </p>
                 <p>
-                  Founded in 2015 in Chomu, Jaipur, Parkline Infra began as a ground improvement and foundation
+                  Incorporated in Chomu, Jaipur, Parkline Infra began as a ground improvement and foundation
                   specialist, building on the founder&apos;s deep expertise in geotechnical engineering and
-                  large-scale project management. Within a decade, the company has expanded into seven distinct
+                  large-scale project management. The company has since expanded into seven distinct
                   service lines spanning bridges, steel fabrication, building construction, railway infrastructure,
                   and in-house equipment manufacturing.
                 </p>
                 <p>
                   Today, Parkline Infra has delivered projects for India&apos;s largest corporates — Adani Group,
                   L&T Construction, GMR Infrastructure, KEC International — and for government agencies
-                  including the Jaipur Development Authority and Public Works Department across eight Indian states.
+                  including the Jaipur Development Authority and Public Works Department across India.
                 </p>
               </div>
               <div className="mt-8">
@@ -150,7 +208,7 @@ export default function AboutPage() {
                     <span className="text-navy-800 font-mono text-xs">{SITE.cin}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-ink-700/50">Founded</span>
+                    <span className="text-ink-700/50">Established</span>
                     <span className="text-navy-800 font-semibold">{SITE.founded}</span>
                   </div>
                   <div className="flex justify-between">
@@ -173,7 +231,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             overline="Our Journey"
-            title="A Decade of"
+            title="Milestones of"
             titleHighlight="Engineering Excellence"
           />
           <div className="mt-12 relative">

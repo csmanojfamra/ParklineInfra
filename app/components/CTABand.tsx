@@ -49,13 +49,13 @@ export default function CTABand({
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href={primaryHref}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold-500 text-navy-900 font-bold rounded-xl hover:bg-gold-400 transition-all duration-200 shadow-[0_4px_20px_rgba(242,185,28,0.45)] hover:shadow-[0_6px_28px_rgba(242,185,28,0.60)] hover:-translate-y-px text-base"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gold-500 text-navy-900 font-bold hover:bg-gold-400 transition-colors duration-200 text-base"
           >
             {primaryLabel} <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href={secondaryHref}
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-xl hover:border-gold-500 hover:text-gold-500 transition-all duration-200 text-base"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-white/30 text-white font-semibold hover:border-gold-500 hover:text-gold-500 transition-colors duration-200 text-base"
           >
             {secondaryLabel}
           </Link>

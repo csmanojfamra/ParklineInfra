@@ -38,7 +38,7 @@ export default function SectionHeader({
         <div className={hasRight ? "col-span-12 md:col-span-6" : "col-span-12 md:col-span-9"}>
           <p className="eyebrow text-gold-500 mb-2">{eyebrow}</p>
           {/* Short gold accent rule */}
-          <div className="w-12 h-[2px] bg-gold-500 mb-4 rounded-full" />
+          <div className="w-12 h-[2px] bg-gold-500 mb-4" />
           <h2 className={`font-display font-black tracking-tight text-4xl md:text-5xl ${headingColor} leading-[1.08]`}>
             {heading}
           </h2>
